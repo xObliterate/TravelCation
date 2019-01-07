@@ -1,15 +1,12 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="~/Index.aspx.cs" Inherits="TravelCation.Index" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TravelCation.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="TravelCation.Index1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-
-    <section class="slider">
+     <section class="slider">
         <ul class="slides">
             <li>
-                <asp:Image ID="img_slide1" runat="server" ImageUrl="~/APP/Assets/IMG/slide2.jpg"/>
+                <asp:Image ID="img_slide1" runat="server" ImageUrl="~/APP/Assets/IMG/slide2.jpg" />
             </li>
         </ul>
     </section>
@@ -43,13 +40,13 @@
                     <div class="input-field col s6">
                         <i class="material-icons prefix">date_range</i>
                         <asp:TextBox ID="tb_checkin" placeholder="Check in (DD/MM/YYYY)" runat="server"></asp:TextBox>
-                        <ajaxtoolkit:calendarextender id="CalendarExtender_checkin" runat="server" format="dd/MM/yyyy" popupbuttonid="tb_checkin" popupposition="BottomLeft" targetcontrolid="tb_checkin" />
+                        <ajaxToolkit:CalendarExtender ID="CalendarExtender_checkin" runat="server" Format="dd/MM/yyyy" PopupButtonID="tb_checkin" PopupPosition="BottomLeft" TargetControlID="tb_checkin" />
                     </div>
 
                     <div class="input-field col s6">
                         <i class="material-icons prefix">date_range</i>
                         <asp:TextBox ID="tb_checkout" placeholder="Check out (DD/MM/YYYY)" runat="server"></asp:TextBox>
-                        <ajaxtoolkit:calendarextender id="CalendarExtender_checkout" runat="server" format="dd/MM/yyyy" popupbuttonid="tb_checkout" popupposition="BottomLeft" targetcontrolid="tb_checkout" />
+                        <ajaxToolkit:CalendarExtender ID="CalendarExtender_checkout" runat="server" Format="dd/MM/yyyy" PopupButtonID="tb_checkout" PopupPosition="BottomLeft" TargetControlID="tb_checkout" DefaultView="Days" />
                     </div>
                 </div>
                 <div class="row">
@@ -96,16 +93,18 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <asp:Button ID="btn_submit" CssClass="btn orange" runat="server" Text="Search" />
-
+                        <asp:Button ID="btn_submit" CssClass="btn orange darken-2" runat="server" Text="Search" OnClick="btn_submit_Click" />
                     </div>
                 </div>
             </asp:View>
 
             <asp:View ID="view2" runat="server">
                 <asp:Label ID="Label1" runat="server" Text="tab 2"></asp:Label>
+                <asp:Button ID="btn_test" runat="server" Text="test" />    
             </asp:View>
-
         </asp:MultiView>
+
+        
     </div>
+
 </asp:Content>

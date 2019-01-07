@@ -4,7 +4,7 @@
         inDuration: 300,
         outDuration: 225,
         coverTrigger: false,
-        alignment: 'right',
+        alignment: 'right'
     });
 });
 
@@ -18,3 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, {});
+});

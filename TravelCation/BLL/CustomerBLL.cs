@@ -19,11 +19,21 @@ namespace TravelCation.BLL
         {
             this.Email = Email;
         }
+
         public CustomerBLL(string Email, string FirstName, string LastName, string Password) : this(Email)
         {
             this.FirstName = FirstName;
             this.LastName = LastName;
             this.Password = Password;
+        }
+
+        public CustomerBLL(string Email, string FirstName, string LastName, string Gender, string PhoneNo, string DOB) : this(Email)
+        {
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            this.Gender = Gender;
+            this.PhoneNo = PhoneNo;
+            this.DOB = DOB;
         }
     }
 }
