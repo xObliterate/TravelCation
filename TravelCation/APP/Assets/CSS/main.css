@@ -42,9 +42,32 @@ main {
 .modalpopup {
     padding: 20px 10px 24px 10px;
     position: relative;
-    width: auto;
+    width: 500px;
     height: auto;
     background-color: white;
     border: 2px solid teal;
     border-radius: 25px;
+}
+
+.form-container {
+    padding: 50px;
+    padding-top: 0;
+}
+
+.tabs .tab a.active {
+    background-color: transparent;
+    color: red;
+}
+
+.tabs .tab a:hover {
+    background-color: transparent;
+    color: #ff6a00;
+}
+
+.tabs .tab a {
+    color: black;
+}
+
+.CautionRow {
+    color: red;
 }

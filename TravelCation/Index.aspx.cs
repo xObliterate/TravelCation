@@ -9,7 +9,7 @@ using System.Web.Services;
 
 namespace TravelCation
 {
-    public partial class Index1 : System.Web.UI.Page
+    public partial class Index : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,13 +22,13 @@ namespace TravelCation
         protected void menu_MenuItemClick(object sender, MenuEventArgs e)
         {
             int index = Int32.Parse(e.Item.Value);
-
+          
             mv_services.ActiveViewIndex = index;
         }
 
         protected void btn_submit_Click(object sender, EventArgs e)
         {
-       
+
         }
     }
 }

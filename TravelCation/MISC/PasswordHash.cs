@@ -10,6 +10,8 @@ using System.Security.Cryptography;
 /// </summary>
 public class PasswordHash
 {
+    public const string CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "abcdefghijklmnopqrstuvwxyz" + "0123456789";
+
     public const int SALT_BYTE_SIZE = 24;
     public const int HASH_BYTE_SIZE = 24;
     public const int PBKDF2_ITERATIONS = 1000;
@@ -56,5 +58,24 @@ public class PasswordHash
         Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(password, salt);
         pbkdf2.IterationCount = iterations;
         return pbkdf2.GetBytes(outputBytes);
+    }
+
+    public static string generateResetToken()
+    {
+        string s = "";
+        using (RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider())
+        {
+            while (s.Length != 64)
+            {
+                byte[] oneByte = new byte[1];
+                provider.GetBytes(oneByte);
+                char character = (char)oneByte[0];
+                if (CHARS.Contains(character))
+                {
+                    s += character;
+                }
+            }
+        }
+        return s;
     }
 }

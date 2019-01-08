@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="TravelCation.master.cs" Inherits="TravelCation.TravelCation" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="~/TravelCation.Master" Inherits="TravelCation.TravelCation" %>
 
 <!DOCTYPE html>
 <html>
@@ -28,20 +28,30 @@
                         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                         <ul id="nav-mobile" class="right hide-on-med-and-down">
                             <li>
-                                <asp:LinkButton ID="btn_mystery" runat="server" CssClass="waves-effect waves-light btn orange darken-2" Text="MYSTERY package" />
+                                <asp:LinkButton ID="btn_mystery" runat="server" CssClass="waves-effect waves-light btn orange darken-2" PostBackUrl="~/APP/MysteryPackage.aspx" Text="MYSTERY package" />
                             </li>
+                            <%if (Session["Customer"] == null)
+                                { %>
+                            <li>
+                                <asp:LinkButton ID="linkbtn_acc1" runat="server" CssClass="dropdown-trigger" data-target="ddl_acc1">Account<i class="material-icons right">arrow_drop_down</i></asp:LinkButton>
+                                <ul id="ddl_acc1" class="dropdown-content">
+                                    <asp:LinkButton ID="linkbtn_login" runat="server" CssClass="blue-text darken-2">Login</asp:LinkButton>
+                                    <asp:LinkButton ID="linkbtn_register" runat="server" CssClass="blue-text darken-2">Register</asp:LinkButton>
+                                </ul>
+                            </li>
+                            <%}
+                                else
+                                { %>
                             <li>
                                 <asp:LinkButton ID="linkbtn_acc" runat="server" CssClass="dropdown-trigger" data-target="ddl_acc">Account<i class="material-icons right">arrow_drop_down</i></asp:LinkButton>
                                 <ul id="ddl_acc" class="dropdown-content">
-                                    <li>
-                                        <asp:LinkButton ID="linkbtn_login" runat="server" CssClass="blue-text darken-2">Login</asp:LinkButton></li>
-
-                                    <li>
-                                        <asp:LinkButton ID="linkbtn_register" runat="server" CssClass="blue-text darken-2">Register</asp:LinkButton></li>
+                                    <asp:LinkButton ID="linkbtn_profile" runat="server" Text="Profile" CssClass="blue-text darken-2" PostBackUrl="~/APP/Profile.aspx"></asp:LinkButton>
+                                    <asp:LinkButton ID="linkbtn_logout" runat="server" Text="Logout" CssClass="blue-text darken-2" OnClick="linkbtn_logout_Click"></asp:LinkButton>
                                 </ul>
                             </li>
+                            <%} %>
                             <li>
-                                <asp:LinkButton ID="linkbtn_manage" runat="server">Manage Trips</asp:LinkButton>
+                                <asp:LinkButton ID="linkbtn_manage" runat="server" PostBackUrl="~/APP/ManageTrip.aspx">Manage Trips</asp:LinkButton>
                             </li>
                             <li>
                                 <asp:LinkButton ID="linkbtn_support" runat="server">Support</asp:LinkButton>
@@ -50,6 +60,35 @@
                     </div>
                 </div>
 
+                <!--Modal Structure for reset password -->
+                <asp:Panel ID="panelResetPassword" runat="server" CssClass="modalpopup">
+                    <div class="container">
+                        <asp:LinkButton ID="linkbtn_back" runat="server" CssClass="left black-text" OnClick="linkbtn_back_Click"><i class="fas fa-chevron-left"></i></asp:LinkButton>
+                        <asp:LinkButton ID="linkbtn_cancel2" runat="server" CssClass="right black-text"><i class="fas fa-times"></i></asp:LinkButton>
+                        <div class="modal-content">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <h4 class="black-text">Reset password</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <asp:TextBox ID="tb_resetEmail" runat="server" TextMode="Email"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="rfv_resetEmail" runat="server" EnableClientScript="false" ValidationGroup="validate2" ControlToValidate="tb_resetEmail" Display="Dynamic" ForeColor="Red" ErrorMessage="Email Required"></asp:RequiredFieldValidator>
+                                    <asp:CustomValidator ID="resetEmailValidator" runat="server" ValidationGroup="validate2" ControlToValidate="tb_resetEmail" ErrorMessage="Email is not valid" Display="Dynamic" ForeColor="Red" OnServerValidate="resetEmailValidator_ServerValidate"></asp:CustomValidator>
+                                    <label for="tb_resetEmail">Email address</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <asp:Button ID="btn_reset" runat="server" CssClass="btn orange darken-2" ValidationGroup="validate2" Text="Reset Password" OnClick="btn_reset_Click" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </asp:Panel>
+                <ajaxToolkit:ModalPopupExtender ID="modalPopUpExtenderReset" runat="server" TargetControlID="linkbtn_forgot" BackgroundCssClass="modalBackground" PopupControlID="panelResetPassword" CancelControlID="linkbtn_cancel2"></ajaxToolkit:ModalPopupExtender>
+
                 <!-- Modal Structure for Sign In-->
                 <asp:Panel ID="panelSignIn" runat="server" CssClass="modalpopup">
                     <div class="container">
@@ -57,17 +96,17 @@
                             <div class="row">
                                 <div class="input-field col s12">
                                     <asp:TextBox ID="tb_loginEmail" runat="server" TextMode="Email"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="rfv_loginEMail" runat="server" EnableClientScript="false" ValidationGroup="validate1" ControlToValidate="tb_loginEmail" Display="Dynamic" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfv_loginEMail" runat="server" EnableClientScript="false" ValidationGroup="validate1" ControlToValidate="tb_loginEmail" Display="Dynamic" ForeColor="Red" ErrorMessage="Email required"></asp:RequiredFieldValidator>
                                     <asp:CustomValidator ID="loginEmailValidator" runat="server" ValidationGroup="validate1" ControlToValidate="tb_loginEmail" ErrorMessage="Email is not valid." Display="Dynamic" ForeColor="Red" OnServerValidate="loginEmailValidator_ServerValidate"></asp:CustomValidator>
-                                        <label for="tb_loginEmail">Email</label>
+                                    <label for="tb_loginEmail">Email</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
                                     <asp:TextBox ID="tb_loginPassword" runat="server" TextMode="Password"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="rfv_password_login" EnableClientScript="false" ValidationGroup="validate1" ControlToValidate="tb_loginPassword" Display="Dynamic" ForeColor="Red" runat="server" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfv_password_login" EnableClientScript="false" ValidationGroup="validate1" ControlToValidate="tb_loginPassword" Display="Dynamic" ForeColor="Red" runat="server" ErrorMessage="Password required"></asp:RequiredFieldValidator>
                                     <asp:CustomValidator ID="loginPasswordValidator" runat="server" ValidationGroup="validate1" ControlToValidate="tb_loginPassword" ErrorMessage="Password at least 6 characters" Display="Dynamic" ForeColor="Red" OnServerValidate="loginPasswordValidator_ServerValidate"></asp:CustomValidator>
-                                     <label for="tb_loginPassword">Password</label>
+                                    <label for="tb_loginPassword">Password</label>
                                 </div>
                             </div>
                             <div class="row">
@@ -83,12 +122,12 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <asp:LinkButton ID="linkbtn_forgot" CssClass="lb blue-text" OnClick="linkbtn_forgot_Click" runat="server">Forgot password?</asp:LinkButton>
+                                <asp:LinkButton ID="linkbtn_forgot" CssClass="lb blue-text" runat="server" OnClientClick="javascript:$find('mpe').hide(); return false;">Forgot password?</asp:LinkButton>
                             </div>
                         </div>
                     </div>
                 </asp:Panel>
-                <ajaxToolkit:ModalPopupExtender ID="modalPopUpExtenderLogin" runat="server" TargetControlID="linkbtn_login" BackgroundCssClass="modalBackground" PopupControlID="panelSignIn" CancelControlID="btn_cancel1"></ajaxToolkit:ModalPopupExtender>
+                <ajaxToolkit:ModalPopupExtender ID="modalPopUpExtenderLogin" runat="server" BehaviorID="mpe" TargetControlID="linkbtn_login" BackgroundCssClass="modalBackground" PopupControlID="panelSignIn" CancelControlID="btn_cancel1"></ajaxToolkit:ModalPopupExtender>
 
                 <!-- Modal Structure for Sign Up -->
                 <asp:Panel ID="panelSignUp" runat="server" CssClass="modalpopup">
@@ -97,12 +136,12 @@
                             <div class="row">
                                 <div class="input-field col s6">
                                     <asp:TextBox ID="tb_firstName" runat="server" CssClass="validate"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="rfv_firstName" runat="server" ValidationGroup="validate" EnableClientScript="false" ControlToValidate="tb_firstName" Display="Dynamic" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfv_firstName" runat="server" ValidationGroup="validate" EnableClientScript="false" ControlToValidate="tb_firstName" Display="Dynamic" ForeColor="Red" ErrorMessage="First name required"></asp:RequiredFieldValidator>
                                     <label for="tb_firstName">First Name</label>
                                 </div>
                                 <div class="input-field col s6">
                                     <asp:TextBox ID="tb_lastName" runat="server" CssClass="validate"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="rfv_lname" EnableClientScript="false" ValidationGroup="validate" ControlToValidate="tb_lastName" Display="Dynamic" ForeColor="Red" runat="server" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfv_lname" EnableClientScript="false" ValidationGroup="validate" ControlToValidate="tb_lastName" Display="Dynamic" ForeColor="Red" runat="server" ErrorMessage="Last name required"></asp:RequiredFieldValidator>
                                     <label for="tb_lastName">Last Name</label>
                                 </div>
                             </div>
@@ -110,7 +149,7 @@
                                 <div class="input-field col s12">
                                     <asp:TextBox ID="tb_registerEmail" runat="server" TextMode="Email" CssClass="validate"></asp:TextBox>
                                     <asp:CustomValidator ID="emailValidator" runat="server" ControlToValidate="tb_registerEmail" ValidationGroup="validate" ErrorMessage="Email is not valid." Display="Dynamic" ForeColor="Red" OnServerValidate="emailValidator_ServerValidate"></asp:CustomValidator>
-                                    <asp:RequiredFieldValidator ID="rfv_email" EnableClientScript="false" ValidationGroup="validate" ControlToValidate="tb_registerEmail" Display="Dynamic" ForeColor="Red" runat="server" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfv_email" EnableClientScript="false" ValidationGroup="validate" ControlToValidate="tb_registerEmail" Display="Dynamic" ForeColor="Red" runat="server" ErrorMessage="Email required"></asp:RequiredFieldValidator>
                                     <label for="tb_registerEmail">Email</label>
                                 </div>
                             </div>
@@ -118,7 +157,7 @@
                                 <div class="input-field col s12">
                                     <asp:TextBox ID="tb_registerPassword" runat="server" TextMode="Password" CssClass="validate"></asp:TextBox>
                                     <asp:CustomValidator ID="passValidator" CssClass="cv" runat="server" ControlToValidate="tb_registerPassword" ValidationGroup="validate" ErrorMessage="Password at least 6 characters" Display="Dynamic" ForeColor="Red" OnServerValidate="passValidator_ServerValidate"></asp:CustomValidator>
-                                    <asp:RequiredFieldValidator ID="rfv_passwordConfirm" EnableClientScript="false" ValidationGroup="validate" ControlToValidate="tb_registerPassword" Display="Dynamic" ForeColor="Red" runat="server" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="rfv_passwordConfirm" EnableClientScript="false" ValidationGroup="validate" ControlToValidate="tb_registerPassword" Display="Dynamic" ForeColor="Red" runat="server" ErrorMessage="passwprd required"></asp:RequiredFieldValidator>
                                     <label for="tb_registerPassword">Password</label>
                                 </div>
                             </div>
@@ -138,19 +177,19 @@
                     <div class="nav-content">
                         <ul class="tabs tabs-transparent">
                             <li class="tab">
-                                <asp:LinkButton ID="linkbtn_home" CssClass="active" runat="server">Home</asp:LinkButton>
+                                <asp:LinkButton ID="linkbtn_home" CssClass="active" runat="server" PostBackUrl="~/Index.aspx">Home</asp:LinkButton>
                             </li>
                             <li class="tab">
-                                <asp:LinkButton ID="linkbtn_hotels" runat="server">Hotels</asp:LinkButton>
+                                <asp:LinkButton ID="linkbtn_hotels" runat="server" PostBackUrl="~/APP/Hotel.aspx">Hotels</asp:LinkButton>
                             </li>
                             <li class="tab">
-                                <asp:LinkButton ID="linkbtn_flight" runat="server">Flights</asp:LinkButton>
+                                <asp:LinkButton ID="linkbtn_flight" runat="server" PostBackUrl="~/APP/Flight.aspx">Flights</asp:LinkButton>
                             </li>
                             <li class="tab">
-                                <asp:LinkButton ID="linkbtn_fightandhotels" runat="server">Flight + Hotel</asp:LinkButton>
+                                <asp:LinkButton ID="linkbtn_fightandhotels" runat="server" PostBackUrl="~/APP/FlightANDHotel.aspx">Flight + Hotel</asp:LinkButton>
                             </li>
                             <li class="tab">
-                                <asp:LinkButton ID="linkbtn_attractions" runat="server">Attractions</asp:LinkButton>
+                                <asp:LinkButton ID="linkbtn_attractions" runat="server" PostBackUrl="~/APP/Attraction.aspx">Attractions</asp:LinkButton>
                             </li>
                         </ul>
                     </div>
@@ -167,5 +206,17 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="APP/Assets/JS/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <%--    <<script type="text/javascript">
+         function pageLoad() {
+             var modalPopup = $find('mpe');
+             modalPopup.add_shown(function () {
+                 modalPopup._backgroundElement.addEventListener("click", function () {
+                     modalPopup.hide();
+                 });
+             });
+         };
+    </script>--%>
 </body>
 </html>

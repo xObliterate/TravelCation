@@ -15,6 +15,8 @@ namespace TravelCation.BLL
         public string DOB { get; set; }
         public string Password { get; set; }
 
+       
+
         public CustomerBLL(string Email)
         {
             this.Email = Email;

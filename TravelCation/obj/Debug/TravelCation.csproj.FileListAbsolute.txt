@@ -1,3 +1,4 @@
+C:\Users\pokem\Documents\Visual Studio 2015\Projects\TravelCation\TravelCation\obj\Debug\TravelCation.csprojResolveAssemblyReference.cache
 C:\Users\pokem\Documents\Visual Studio 2015\Projects\TravelCation\TravelCation\bin\ApplicationInsights.config
 C:\Users\pokem\Documents\Visual Studio 2015\Projects\TravelCation\TravelCation\bin\roslyn\csc.exe
 C:\Users\pokem\Documents\Visual Studio 2015\Projects\TravelCation\TravelCation\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -31,4 +32,3 @@ C:\Users\pokem\Documents\Visual Studio 2015\Projects\TravelCation\TravelCation\b
 C:\Users\pokem\Documents\Visual Studio 2015\Projects\TravelCation\TravelCation\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\pokem\Documents\Visual Studio 2015\Projects\TravelCation\TravelCation\obj\Debug\TravelCation.dll
 C:\Users\pokem\Documents\Visual Studio 2015\Projects\TravelCation\TravelCation\obj\Debug\TravelCation.pdb
-C:\Users\pokem\Documents\Visual Studio 2015\Projects\TravelCation\TravelCation\obj\Debug\TravelCation.csprojResolveAssemblyReference.cache

@@ -10,7 +10,7 @@
 namespace TravelCation {
     
     
-    public partial class Index1 {
+    public partial class Index {
         
         /// <summary>
         /// img_slide1 control.

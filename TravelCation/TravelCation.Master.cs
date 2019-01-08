@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -12,9 +13,14 @@ namespace TravelCation
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            BLL.CustomerBLL cust = (BLL.CustomerBLL)Session["Customer"];
+
+            if (cust != null)
             {
-                InputValidation.ClearInputs(Controls);
+                panelResetPassword.Visible = false;
+                panelSignIn.Visible = false;
+                panelSignUp.Visible = false;
+                linkbtn_acc.Text = cust.FirstName;
             }
         }
 
@@ -122,9 +128,53 @@ namespace TravelCation
             }
         }
 
-        protected void linkbtn_forgot_Click(object sender, EventArgs e)
+        protected void btn_reset_Click(object sender, EventArgs e)
         {
+            string email = tb_resetEmail.Text;
 
+            if (Page.IsValid)
+            {
+                DAL.CustomerDAL customerDAL = new DAL.CustomerDAL();
+                switch (customerDAL.resetAccountPassword(email))
+                {
+                    case 0:
+                        Response.Write("Check email for instructions");
+                        break;
+                    case 1:
+                        Response.Write("Empty fields");
+                        break;
+                    case 2:
+                        Response.Write("Invalid email");
+                        break;
+                }
+            }
+            else
+            {
+                modalPopUpExtenderReset.Show();
+            }
+        }
+
+        protected void linkbtn_back_Click(object sender, EventArgs e)
+        {
+            modalPopUpExtenderLogin.Show();
+        }
+
+        protected void linkbtn_logout_Click(object sender, EventArgs e)
+        {
+            logout();
+        }
+
+        private void logout()
+        {
+            Session.Abandon();
+            Session.RemoveAll();
+            FormsAuthentication.SignOut();
+
+            Response.Cache.SetExpires(DateTime.Now.AddMinutes(-1));
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Cache.SetNoStore();
+
+            Response.Redirect("/Index.aspx");
         }
 
         protected void emailValidator_ServerValidate(object source, ServerValidateEventArgs args)
@@ -166,6 +216,18 @@ namespace TravelCation
         protected void loginPasswordValidator_ServerValidate(object source, ServerValidateEventArgs args)
         {
             if (InputValidation.ValidateOnePassword(args.Value) == true)
+            {
+                args.IsValid = true;
+            }
+            else
+            {
+                args.IsValid = false;
+            }
+        }
+
+        protected void resetEmailValidator_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            if (InputValidation.ValidateEmail(args.Value) == true)
             {
                 args.IsValid = true;
             }

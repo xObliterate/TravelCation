@@ -15,7 +15,9 @@ namespace TravelCation.DAL
 
         public int createAccount(CustomerBLL customer)
         {
-            string queryStr = "", email = customer.Email.ToLower();
+
+            string queryStr = "";
+            string email = customer.Email.ToLower();
             SqlCommand cmd;
 
             SqlConnection con = new SqlConnection(connStr);
@@ -134,6 +136,116 @@ namespace TravelCation.DAL
                 dr.Dispose();
             }
             return 0;// Login Success
+        }
+
+        public int resetAccountPassword(string email)
+        {
+            string resetemail = email.ToLower();
+            string queryStr = "";
+            string uniqueID = PasswordHash.generateResetToken();
+            Uri uri = HttpContext.Current.Request.Url;
+            string aspx = "/APP/ResetPassword.aspx?code=";
+
+            SqlConnection con = new SqlConnection(connStr);
+            queryStr = "SELECT Email FROM Customer WHERE Email = @email";
+            SqlCommand cmd = new SqlCommand(queryStr, con);
+            cmd.Parameters.AddWithValue(@"email", resetemail);
+            con.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (string.IsNullOrEmpty(resetemail))
+            {
+                return 1;// Empty fields
+            }
+
+            if (!InputValidation.ValidateEmail(resetemail))
+            {
+                return 2;// Invalid email
+            }
+
+            else
+            {
+                dr.Close();
+                dr.Dispose();
+
+                queryStr = "UPDATE Customer SET UniqueID = @uniqueid WHERE Email = @email";
+                cmd = new SqlCommand(queryStr, con);
+                cmd.Parameters.AddWithValue("@uniqueid", uniqueID);
+                cmd.Parameters.AddWithValue("email", resetemail);
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                string url = string.Format("{0}{1}{2}:{3}{4}{5}", uri.Scheme, Uri.SchemeDelimiter, uri.Host, uri.Port, aspx, uniqueID);
+                string body = string.Format("Hello {0},<br/><br/> We received a request to reset your password.<br/><br/>{1}<br/><br/>TravelCation", "a", url);
+
+                new SendMail().send(email, "[TravelCation] Password Reset", body);
+            }
+            return 0;//Success
+        }
+
+        public CustomerBLL getEmail(string uniqueID)
+        {
+            CustomerBLL cust = null;
+            string Email = "";
+
+            SqlConnection con = new SqlConnection(connStr);
+            string queryStr = "SELECT Email FROM Customer WHERE UniqueID = @uniqueid";
+            SqlCommand cmd = new SqlCommand(queryStr, con);
+            cmd.Parameters.AddWithValue("@uniqueid", uniqueID);
+            con.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.Read())
+            {
+                Email = dr["Email"].ToString();
+                cust = new CustomerBLL(Email);
+            }
+
+            else
+            {
+                cust = null;// unique id does not exist
+            }
+            con.Close();
+            dr.Close();
+            dr.Dispose();
+
+            return cust;// success
+        }
+
+        public int changePassword(string email, string password)
+        {
+            SqlConnection con = new SqlConnection(connStr);
+            string queryStr = "UPDATE Customer SET Password = @password, UniqueID = NULL WHERE Email = @email";
+            SqlCommand cmd = new SqlCommand(queryStr, con);
+
+            if (!InputValidation.ValidateOnePassword(password))
+            {
+                return 1;// Invalid password requirement
+            }
+
+            else
+            {
+                // First ":" to second is the salt
+                // Second ":" to the end is the hash
+                string saltHashReturned = PasswordHash.CreateHash(password);
+                int commaIndex = saltHashReturned.IndexOf(":");
+                string extractedString = saltHashReturned.Substring(0, commaIndex);
+                commaIndex = saltHashReturned.IndexOf(":");
+                extractedString = saltHashReturned.Substring(commaIndex + 1);
+                commaIndex = extractedString.IndexOf(":");
+                string salt = extractedString.Substring(0, commaIndex);
+
+                commaIndex = extractedString.IndexOf(":");
+                extractedString = extractedString.Substring(commaIndex + 1);
+                string hash = extractedString;
+
+                cmd.Parameters.AddWithValue("@password", saltHashReturned);
+                cmd.Parameters.AddWithValue("@email", email);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            return 0;
         }
     }
 }
