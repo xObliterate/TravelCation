@@ -15,7 +15,7 @@ namespace TravelCation
         {
             if (!IsPostBack)
             {
-
+               
             }
         }
 
@@ -28,7 +28,7 @@ namespace TravelCation
 
         protected void btn_submit_Click(object sender, EventArgs e)
         {
-
+          
         }
     }
 }

@@ -15,7 +15,10 @@ namespace TravelCation.BLL
         public string DOB { get; set; }
         public string Password { get; set; }
 
-       
+        public CustomerBLL()
+        {
+
+        }
 
         public CustomerBLL(string Email)
         {
@@ -36,6 +39,36 @@ namespace TravelCation.BLL
             this.Gender = Gender;
             this.PhoneNo = PhoneNo;
             this.DOB = DOB;
+        }
+
+        public int createAccount(CustomerBLL customer)
+        {
+            DAL.CustomerDAL customerDAL = new DAL.CustomerDAL();
+            return customerDAL.createAccount(customer);
+        }
+
+        public int Login(string email, string password)
+        {
+            DAL.CustomerDAL customerDAL = new DAL.CustomerDAL();
+            return customerDAL.Login(email, password);
+        }
+
+        public int resetAccountPassword(string email)
+        {
+            DAL.CustomerDAL customerDAL = new DAL.CustomerDAL();
+            return customerDAL.resetAccountPassword(email);
+        }
+
+        public CustomerBLL getEmail(string uniqueID)
+        {
+            DAL.CustomerDAL customerDAL = new DAL.CustomerDAL();
+            return customerDAL.getEmail(uniqueID);
+        }
+
+        public int changePassword(string email, string password)
+        {
+            DAL.CustomerDAL customerDAL = new DAL.CustomerDAL();
+            return customerDAL.changePassword(email, password);
         }
     }
 }

@@ -130,30 +130,75 @@ namespace TravelCation {
         protected global::System.Web.UI.WebControls.Button btn_submit;
         
         /// <summary>
-        /// view2 control.
+        /// view_flight control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View view2;
+        protected global::System.Web.UI.WebControls.View view_flight;
         
         /// <summary>
-        /// Label1 control.
+        /// tb_flyingFrom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.TextBox tb_flyingFrom;
         
         /// <summary>
-        /// btn_test control.
+        /// tb_flyingTo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_test;
+        protected global::System.Web.UI.WebControls.TextBox tb_flyingTo;
+        
+        /// <summary>
+        /// tb_departDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_departDate;
+        
+        /// <summary>
+        /// tb_returnDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_returnDate;
+        
+        /// <summary>
+        /// ddl_flight_adult control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_flight_adult;
+        
+        /// <summary>
+        /// ddl_flight_child control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_flight_child;
+        
+        /// <summary>
+        /// ddl_flight_infaint control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_flight_infaint;
     }
 }

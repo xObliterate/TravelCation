@@ -11,6 +11,8 @@ namespace TravelCation
 {
     public partial class TravelCation : System.Web.UI.MasterPage
     {
+        BLL.CustomerBLL customerBLL = null;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             BLL.CustomerBLL cust = (BLL.CustomerBLL)Session["Customer"];
@@ -31,8 +33,8 @@ namespace TravelCation
 
             if (Page.IsValid)
             {
-                DAL.CustomerDAL customerDAL = new DAL.CustomerDAL();
-                switch (customerDAL.Login(email, password))
+                customerBLL = new BLL.CustomerBLL();
+                switch (customerBLL.Login(email, password))
                 {
                     case 0:
                         Response.Write("Login successful");
@@ -66,9 +68,9 @@ namespace TravelCation
 
             if (Page.IsValid)
             {
-                BLL.CustomerBLL customerBLL = new BLL.CustomerBLL(email, firstName, lastName, password);
-                DAL.CustomerDAL customerDAL = new DAL.CustomerDAL();
-                switch (customerDAL.createAccount(customerBLL))
+                customerBLL = new BLL.CustomerBLL(email, firstName, lastName, password);
+                BLL.CustomerBLL cust = new BLL.CustomerBLL();
+                switch (cust.createAccount(customerBLL))
                 {
                     case 0:
                         Response.Write("Register successful");
@@ -134,8 +136,8 @@ namespace TravelCation
 
             if (Page.IsValid)
             {
-                DAL.CustomerDAL customerDAL = new DAL.CustomerDAL();
-                switch (customerDAL.resetAccountPassword(email))
+                customerBLL = new BLL.CustomerBLL();
+                switch (customerBLL.resetAccountPassword(email))
                 {
                     case 0:
                         Response.Write("Check email for instructions");

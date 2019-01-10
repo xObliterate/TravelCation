@@ -65,9 +65,25 @@ main {
 }
 
 .tabs .tab a {
-    color: black;
+    color: darkblue;
 }
 
 .CautionRow {
     color: red;
+}
+
+input::-webkit-input-placeholder { /* WebKit browsers */
+    color: darkgrey;
+}
+
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: darkgrey;
+}
+
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: darkgrey;
+}
+
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: darkgrey;
 }
