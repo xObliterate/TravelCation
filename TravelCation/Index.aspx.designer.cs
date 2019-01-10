@@ -31,6 +31,15 @@ namespace TravelCation {
         protected global::System.Web.UI.WebControls.Menu menu;
         
         /// <summary>
+        /// updatepanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updatepanel;
+        
+        /// <summary>
         /// mv_services control.
         /// </summary>
         /// <remarks>
@@ -121,13 +130,13 @@ namespace TravelCation {
         protected global::System.Web.UI.WebControls.DropDownList ddl_childrens;
         
         /// <summary>
-        /// btn_submit control.
+        /// btn_submitHotel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_submit;
+        protected global::System.Web.UI.WebControls.Button btn_submitHotel;
         
         /// <summary>
         /// view_flight control.
@@ -200,5 +209,14 @@ namespace TravelCation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddl_flight_infaint;
+        
+        /// <summary>
+        /// btn_submitFlight control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_submitFlight;
     }
 }

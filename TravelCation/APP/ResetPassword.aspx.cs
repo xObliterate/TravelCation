@@ -30,7 +30,7 @@ namespace TravelCation.APP
                 }
                 else
                 {
-                    lbl_msg.Text = "Error 404";
+                    lbl_msg.Text = "Error 404<br/><p><h6>Link has expired</h6></p>";
                     lbl_msg.ForeColor = Color.Red;
                     tb_password.Visible = false;
                     btn_changePw.Visible = false;
@@ -49,11 +49,13 @@ namespace TravelCation.APP
                 switch (customerDAL.changePassword(email, tb_password.Text))
                 {
                     case 0:
-                        Page.ClientScript.RegisterClientScriptBlock(GetType(), "msgbox", "alert('Reset password success');window.location = '/Index.aspx';", true);
+                        MISC.showToastr.Success(this.Page, "Password has been updated", "");
+                        tb_password.Text = "";
+                        Response.AddHeader("REFRESH", "3;URL=/Index.aspx");
                         break;
 
                     case 1:
-                        Response.Write("At least 6 characters");
+                        MISC.showToastr.Error(this.Page, "At least 6 characters", "");
                         break;
                 }
             }

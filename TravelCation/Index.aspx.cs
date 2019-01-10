@@ -15,20 +15,25 @@ namespace TravelCation
         {
             if (!IsPostBack)
             {
-               
+
             }
         }
 
         protected void menu_MenuItemClick(object sender, MenuEventArgs e)
         {
             int index = Int32.Parse(e.Item.Value);
-          
+
             mv_services.ActiveViewIndex = index;
         }
 
-        protected void btn_submit_Click(object sender, EventArgs e)
+        protected void btn_submitHotel_Click(object sender, EventArgs e)
         {
-          
+            
+        }
+
+        protected void btn_submitFlight_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

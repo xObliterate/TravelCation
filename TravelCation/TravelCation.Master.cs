@@ -19,10 +19,19 @@ namespace TravelCation
 
             if (cust != null)
             {
-                panelResetPassword.Visible = false;
                 panelSignIn.Visible = false;
                 panelSignUp.Visible = false;
-                linkbtn_acc.Text = cust.FirstName;
+                linkbtn_acc.Text = cust.FirstName.ToString().ToUpper();
+            }
+
+            if (!IsPostBack)
+            {
+                if (Request.Cookies["tbEmail"] != null && Request.Cookies["tbPw"] != null)
+                {
+                    cb_remember.Checked = true;
+                    tb_loginEmail.Text = Request.Cookies["tbEmail"].Value;
+                    tb_loginPassword.Text = Request.Cookies["tbPw"].Value;
+                }
             }
         }
 
@@ -33,23 +42,39 @@ namespace TravelCation
 
             if (Page.IsValid)
             {
+                if (cb_remember.Checked == true)
+                {
+                    Response.Cookies["tbEmail"].Value = tb_loginEmail.Text;
+                    Response.Cookies["tbPw"].Value = tb_loginPassword.Text;
+                    Response.Cookies["tbEmail"].Expires = DateTime.Now.AddDays(3);
+                    Response.Cookies["tbPw"].Expires = DateTime.Now.AddDays(3);
+                }
+                else
+                {
+                    Response.Cookies["tbEmail"].Expires = DateTime.Now.AddDays(-1);
+                    Response.Cookies["tbPw"].Expires = DateTime.Now.AddDays(-1);
+                }
+
                 customerBLL = new BLL.CustomerBLL();
                 switch (customerBLL.Login(email, password))
                 {
                     case 0:
-                        Response.Write("Login successful");
+                        panelSignIn.Visible = false;
+                        panelSignUp.Visible = false;
+                        BLL.CustomerBLL cust = (BLL.CustomerBLL)Session["Customer"];
+                        MISC.showToastr.Success(this.Page, "Welcome " + cust.getFullName(), "");
                         break;
 
                     case 1:
-                        Response.Write("Email does exist");
+                        MISC.showToastr.Warning(this.Page, "Email does not exist", "");
                         break;
 
                     case 2:
-                        Response.Write("Empty fields");
+                        MISC.showToastr.Error(this.Page, "Empty fields", "");
                         break;
 
                     case 3:
-                        Response.Write("Invalid email");
+                        MISC.showToastr.Warning(this.Page, "Invalid email", "");
                         break;
                 }
             }
@@ -73,11 +98,12 @@ namespace TravelCation
                 switch (cust.createAccount(customerBLL))
                 {
                     case 0:
-                        Response.Write("Register successful");
+                        MISC.showToastr.Success(this.Page, "Register successful " + cust.getFullName(), "");
                         break;
 
                     case 1:
-                        Response.Write("Email exist");
+                        MISC.showToastr.Info(this.Page, "Email exist", "");
+                        modalPopUpExtenderRegister.Show();
                         break;
 
                     case 2:
@@ -112,15 +138,15 @@ namespace TravelCation
                                 sb.Append(", ");
                             }
                         }
-                        Response.Write(sb.ToString() + "required");
+                        MISC.showToastr.Warning(this.Page, sb.ToString() + "required", "");
                         break;
 
                     case 3:
-                        Response.Write("Invalid Email");
+                        MISC.showToastr.Error(this.Page, "Invalid email", "");
                         break;
 
                     case 4:
-                        Response.Write("Password length must be more than 6");
+                        MISC.showToastr.Error(this.Page, "Password length must be more than 6", "");
                         break;
                 }
             }
@@ -128,37 +154,6 @@ namespace TravelCation
             {
                 modalPopUpExtenderRegister.Show();
             }
-        }
-
-        protected void btn_reset_Click(object sender, EventArgs e)
-        {
-            string email = tb_resetEmail.Text;
-
-            if (Page.IsValid)
-            {
-                customerBLL = new BLL.CustomerBLL();
-                switch (customerBLL.resetAccountPassword(email))
-                {
-                    case 0:
-                        Response.Write("Check email for instructions");
-                        break;
-                    case 1:
-                        Response.Write("Empty fields");
-                        break;
-                    case 2:
-                        Response.Write("Invalid email");
-                        break;
-                }
-            }
-            else
-            {
-                modalPopUpExtenderReset.Show();
-            }
-        }
-
-        protected void linkbtn_back_Click(object sender, EventArgs e)
-        {
-            modalPopUpExtenderLogin.Show();
         }
 
         protected void linkbtn_logout_Click(object sender, EventArgs e)
@@ -218,18 +213,6 @@ namespace TravelCation
         protected void loginPasswordValidator_ServerValidate(object source, ServerValidateEventArgs args)
         {
             if (InputValidation.ValidateOnePassword(args.Value) == true)
-            {
-                args.IsValid = true;
-            }
-            else
-            {
-                args.IsValid = false;
-            }
-        }
-
-        protected void resetEmailValidator_ServerValidate(object source, ServerValidateEventArgs args)
-        {
-            if (InputValidation.ValidateEmail(args.Value) == true)
             {
                 args.IsValid = true;
             }

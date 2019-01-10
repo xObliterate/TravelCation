@@ -28,7 +28,7 @@ public class InputValidation
     public static bool ValidateOnePassword(string p1)
     {
         bool pass = true;
-        pass = ((p1.Length > 6) ? true : false);
+        pass = ((p1.Length >= 6) ? true : false);
         return pass;
     }
 

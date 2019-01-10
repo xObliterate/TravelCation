@@ -4,7 +4,8 @@
         inDuration: 300,
         outDuration: 225,
         coverTrigger: false,
-        alignment: 'right'
+        alignment: 'right',
+        constrainWidth: false
     });
 });
 

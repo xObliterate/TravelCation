@@ -41,6 +41,11 @@ namespace TravelCation.BLL
             this.DOB = DOB;
         }
 
+        public string getFullName()
+        {
+            return FirstName + " " + LastName;
+        }
+
         public int createAccount(CustomerBLL customer)
         {
             DAL.CustomerDAL customerDAL = new DAL.CustomerDAL();

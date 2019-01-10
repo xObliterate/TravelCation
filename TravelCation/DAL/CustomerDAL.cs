@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
 using TravelCation.BLL;
+using System.Web.UI;
 
 namespace TravelCation.DAL
 {
@@ -93,7 +94,7 @@ namespace TravelCation.DAL
             con.Open();
             SqlDataReader dr = cmd.ExecuteReader();
 
-            if (dr.Read() && !dr.HasRows)
+            if (!dr.HasRows)
             {
                 return 1;// Email does not exist
             }
@@ -110,30 +111,31 @@ namespace TravelCation.DAL
 
             else
             {
-                string Email = dr["Email"].ToString();
-                string FirstName = dr["FirstName"].ToString();
-                string LastName = dr["LastName"].ToString();
-                string Gender = dr["Gender"].ToString();
-                string PhoneNo = dr["PhoneNo"].ToString();
-                string DOB = dr["DOB"].ToString();
-                string HashPassword = dr["Password"].ToString();
+                if (dr.Read())
+                {
+                    string Email = dr["Email"].ToString();
+                    string FirstName = dr["FirstName"].ToString();
+                    string LastName = dr["LastName"].ToString();
+                    string Gender = dr["Gender"].ToString();
+                    string PhoneNo = dr["PhoneNo"].ToString();
+                    string DOB = dr["DOB"].ToString();
+                    string HashPassword = dr["Password"].ToString();
 
-                bool validUser = PasswordHash.ValidatePassword(password, HashPassword);
-                if (validUser == true)
-                {
-                    CustomerBLL cust = new CustomerBLL(Email, FirstName, LastName, Gender, PhoneNo, DOB);
-                    HttpContext.Current.Session.RemoveAll();
-                    HttpContext.Current.Session["Customer"] = cust;
-                    HttpContext.Current.Response.BufferOutput = true;
-                    HttpContext.Current.Response.Redirect("/APP/Profile.aspx");
+                    bool validUser = PasswordHash.ValidatePassword(password, HashPassword);
+                    if (validUser == true)
+                    {
+                        CustomerBLL cust = new CustomerBLL(Email, FirstName, LastName, Gender, PhoneNo, DOB);
+                        HttpContext.Current.Session.RemoveAll();
+                        HttpContext.Current.Session["Customer"] = cust;
+                    }
+                    else
+                    {
+                        return 4;// Wrong Password
+                    }
+                    con.Close();
+                    dr.Close();
+                    dr.Dispose();
                 }
-                else
-                {
-                    return 4;// Wrong Password
-                }
-                con.Close();
-                dr.Close();
-                dr.Dispose();
             }
             return 0;// Login Success
         }
