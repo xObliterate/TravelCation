@@ -22,15 +22,6 @@ namespace TravelCation {
         protected global::System.Web.UI.WebControls.Image img_slide1;
         
         /// <summary>
-        /// menu control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu menu;
-        
-        /// <summary>
         /// updatepanel control.
         /// </summary>
         /// <remarks>
@@ -38,6 +29,15 @@ namespace TravelCation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel updatepanel;
+        
+        /// <summary>
+        /// menu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Menu menu;
         
         /// <summary>
         /// mv_services control.
@@ -148,6 +148,42 @@ namespace TravelCation {
         protected global::System.Web.UI.WebControls.View view_flight;
         
         /// <summary>
+        /// updatePanel_viewFlightSub_menuFlight control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updatePanel_viewFlightSub_menuFlight;
+        
+        /// <summary>
+        /// menu_flight control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Menu menu_flight;
+        
+        /// <summary>
+        /// mv_subFlight control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.MultiView mv_subFlight;
+        
+        /// <summary>
+        /// view_subFlight control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View view_subFlight;
+        
+        /// <summary>
         /// tb_flyingFrom control.
         /// </summary>
         /// <remarks>
@@ -173,6 +209,15 @@ namespace TravelCation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tb_departDate;
+        
+        /// <summary>
+        /// returnDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl returnDate;
         
         /// <summary>
         /// tb_returnDate control.

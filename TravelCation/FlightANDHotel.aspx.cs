@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace TravelCation.APP
+namespace TravelCation
 {
-    public partial class MysteryPackage : System.Web.UI.Page
+    public partial class FlightANDHotel : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

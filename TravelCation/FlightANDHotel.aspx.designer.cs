@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TravelCation.APP
+namespace TravelCation
 {
 
 
-    public partial class MysteryPackage
+    public partial class FlightANDHotel
     {
     }
 }

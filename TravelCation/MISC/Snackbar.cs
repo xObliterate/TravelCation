@@ -11,25 +11,25 @@ namespace TravelCation.MISC
         public static void Success(this Page page, string message, string title)
         {
             page.ClientScript.RegisterStartupScript(page.GetType(), "toastr_message",
-            String.Format("toastr.success('{0}', '{1}');", message, title), addScriptTags: true);
+            string.Format("toastr.success('{0}', '{1}');", message, title), addScriptTags: true);
         }
 
         public static void Info(this Page page, string message, string title)
         {
             page.ClientScript.RegisterStartupScript(page.GetType(), "toastr_message",
-            String.Format("toastr.info('{0}', '{1}');", message, title), addScriptTags: true);
+            string.Format("toastr.info('{0}', '{1}');", message, title), addScriptTags: true);
         }
 
         public static void Warning(this Page page, string message, string title)
         {
             page.ClientScript.RegisterStartupScript(page.GetType(), "toastr_message",
-            String.Format("toastr.warning('{0}', '{1}');", message, title), addScriptTags: true);
+            string.Format("toastr.warning('{0}', '{1}');", message, title), addScriptTags: true);
         }
 
         public static void Error(this Page page, string message, string title)
         {
             page.ClientScript.RegisterStartupScript(page.GetType(), "toastr_message",
-            String.Format("toastr.error('{0}', '{1}');", message, title), addScriptTags: true);
+            string.Format("toastr.error('{0}', '{1}');", message, title), addScriptTags: true);
         }
     }
 }

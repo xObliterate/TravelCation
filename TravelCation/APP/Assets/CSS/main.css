@@ -54,10 +54,6 @@ main {
     padding-top: 0;
 }
 
-.tabs .tab a.active {
-    background-color: transparent;
-    color: red;
-}
 
 .tabs .tab a:hover {
     background-color: transparent;

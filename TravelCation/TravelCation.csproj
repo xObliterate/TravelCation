@@ -103,14 +103,14 @@
     <Content Include="APP\Assets\IMG\logo.png" />
     <Content Include="APP\Assets\IMG\slide.jpg" />
     <Content Include="APP\Assets\IMG\slide2.jpg" />
-    <Content Include="APP\Attraction.aspx" />
-    <Content Include="APP\Flight.aspx" />
-    <Content Include="APP\FlightANDHotel.aspx" />
-    <Content Include="APP\ForgotPassword.aspx" />
-    <Content Include="APP\Hotel.aspx" />
-    <Content Include="APP\ManageTrip.aspx" />
-    <Content Include="APP\MysteryPackage.aspx" />
-    <Content Include="APP\Profile.aspx" />
+    <Content Include="Attraction.aspx" />
+    <Content Include="Flight.aspx" />
+    <Content Include="FlightANDHotel.aspx" />
+    <Content Include="ForgotPassword.aspx" />
+    <Content Include="Hotel.aspx" />
+    <Content Include="ManageTrip.aspx" />
+    <Content Include="MysteryPackage.aspx" />
+    <Content Include="Profile.aspx" />
     <Content Include="APP\ResetPassword.aspx" />
     <Content Include="Index.aspx" />
     <Content Include="APP\Assets\JS\main.js" />
@@ -151,60 +151,60 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="APP\Attraction.aspx.cs">
+    <Compile Include="Attraction.aspx.cs">
       <DependentUpon>Attraction.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="APP\Attraction.aspx.designer.cs">
+    <Compile Include="Attraction.aspx.designer.cs">
       <DependentUpon>Attraction.aspx</DependentUpon>
     </Compile>
-    <Compile Include="APP\Flight.aspx.cs">
+    <Compile Include="Flight.aspx.cs">
       <DependentUpon>Flight.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="APP\Flight.aspx.designer.cs">
+    <Compile Include="Flight.aspx.designer.cs">
       <DependentUpon>Flight.aspx</DependentUpon>
     </Compile>
-    <Compile Include="APP\FlightANDHotel.aspx.cs">
+    <Compile Include="FlightANDHotel.aspx.cs">
       <DependentUpon>FlightANDHotel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="APP\FlightANDHotel.aspx.designer.cs">
+    <Compile Include="FlightANDHotel.aspx.designer.cs">
       <DependentUpon>FlightANDHotel.aspx</DependentUpon>
     </Compile>
-    <Compile Include="APP\ForgotPassword.aspx.cs">
+    <Compile Include="ForgotPassword.aspx.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="APP\ForgotPassword.aspx.designer.cs">
+    <Compile Include="ForgotPassword.aspx.designer.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
     </Compile>
-    <Compile Include="APP\Hotel.aspx.cs">
+    <Compile Include="Hotel.aspx.cs">
       <DependentUpon>Hotel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="APP\Hotel.aspx.designer.cs">
+    <Compile Include="Hotel.aspx.designer.cs">
       <DependentUpon>Hotel.aspx</DependentUpon>
     </Compile>
-    <Compile Include="APP\ManageTrip.aspx.cs">
+    <Compile Include="ManageTrip.aspx.cs">
       <DependentUpon>ManageTrip.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="APP\ManageTrip.aspx.designer.cs">
+    <Compile Include="ManageTrip.aspx.designer.cs">
       <DependentUpon>ManageTrip.aspx</DependentUpon>
     </Compile>
-    <Compile Include="APP\MysteryPackage.aspx.cs">
+    <Compile Include="MysteryPackage.aspx.cs">
       <DependentUpon>MysteryPackage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="APP\MysteryPackage.aspx.designer.cs">
+    <Compile Include="MysteryPackage.aspx.designer.cs">
       <DependentUpon>MysteryPackage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="APP\Profile.aspx.cs">
+    <Compile Include="Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="APP\Profile.aspx.designer.cs">
+    <Compile Include="Profile.aspx.designer.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="APP\ResetPassword.aspx.cs">

@@ -31,10 +31,10 @@
                         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                         <ul id="nav-mobile" class="right hide-on-med-and-down">
                             <li>
-                                <asp:LinkButton ID="btn_mystery" runat="server" CssClass="waves-effect waves-light btn orange darken-2" PostBackUrl="~/APP/MysteryPackage.aspx" Text="MYSTERY package" />
+                                <asp:LinkButton ID="btn_mystery" runat="server" CssClass="waves-effect waves-light btn orange darken-2" PostBackUrl="~/MysteryPackage.aspx" Text="MYSTERY package" />
                             </li>
                             <li>
-                                <asp:LinkButton ID="linkbtn_manage" runat="server" PostBackUrl="~/APP/ManageTrip.aspx">Manage Trips</asp:LinkButton>
+                                <asp:LinkButton ID="linkbtn_manage" runat="server" PostBackUrl="~/ManageTrip.aspx">Manage Trips</asp:LinkButton>
                             </li>
                             <li>
                                 <asp:LinkButton ID="linkbtn_support" runat="server">Support</asp:LinkButton>
@@ -42,8 +42,8 @@
                             <%if (Session["Customer"] == null)
                                 { %>
                             <li>
-                                <asp:LinkButton ID="linkbtn_acc1" runat="server" CssClass="dropdown-trigger" data-target="dropdown8">Account</asp:LinkButton>
-                                <ul id="dropdown8" class="dropdown-content">
+                                <asp:LinkButton ID="linkbtn_acc1" runat="server" CssClass="dropdown-trigger" data-target="dropdown">Account</asp:LinkButton>
+                                <ul id="dropdown" class="dropdown-content">
                                     <asp:LinkButton ID="linkbtn_login" runat="server" CssClass="blue-text darken-2">Login</asp:LinkButton>
                                     <asp:LinkButton ID="linkbtn_register" runat="server" CssClass="blue-text darken-2">Register</asp:LinkButton>
                                 </ul>
@@ -52,10 +52,12 @@
                                 else
                                 { %>
                             <li>
-                                <asp:LinkButton ID="linkbtn_acc" runat="server" Text="Profile" CssClass="white-text" PostBackUrl="~/APP/Profile.aspx"></asp:LinkButton>
+                                <asp:LinkButton ID="linkbtn_acc" runat="server" Text="Account" CssClass="dropdown-trigger" data-target="dropdown1"></asp:LinkButton>
+                                <ul id="dropdown1" class="dropdown-content">
+                                    <asp:LinkButton ID="linkbtn_profile" runat="server" Text="Profile" CssClass="blue-text darken-2" PostBackUrl="~/Profile.aspx"></asp:LinkButton>
+                                    <asp:LinkButton ID="linkbtn_logout" runat="server" Text="Sign out" CssClass="blue-text darken-2" OnClick="linkbtn_logout_Click"></asp:LinkButton>
+                                </ul>
                             </li>
-                            <li>
-                                <asp:LinkButton ID="linkbtn_logout" runat="server" Text="Sign out" CssClass="orange-text darken-2" OnClick="linkbtn_logout_Click"></asp:LinkButton></li>
                             <%} %>
                         </ul>
                     </div>
@@ -96,7 +98,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <asp:LinkButton ID="linkbtn_forgot" CssClass="lb blue-text" runat="server" PostBackUrl="~/APP/ForgotPassword.aspx">Forgot password?</asp:LinkButton>
+                                        <asp:LinkButton ID="linkbtn_forgot" CssClass="lb blue-text" runat="server" PostBackUrl="~/ForgotPassword.aspx">Forgot password?</asp:LinkButton>
                                     </div>
                                 </div>
                             </div>
@@ -168,16 +170,16 @@
                                 <asp:LinkButton ID="linkbtn_home" CssClass="active" runat="server" PostBackUrl="~/Index.aspx">Home</asp:LinkButton>
                             </li>
                             <li class="tab">
-                                <asp:LinkButton ID="linkbtn_hotels" runat="server" PostBackUrl="~/APP/Hotel.aspx">Hotels</asp:LinkButton>
+                                <asp:LinkButton ID="linkbtn_hotels" runat="server" PostBackUrl="~/Hotel.aspx">Hotels</asp:LinkButton>
                             </li>
                             <li class="tab">
-                                <asp:LinkButton ID="linkbtn_flight" runat="server" PostBackUrl="~/APP/Flight.aspx">Flights</asp:LinkButton>
+                                <asp:LinkButton ID="linkbtn_flight" runat="server" PostBackUrl="~/Flight.aspx">Flights</asp:LinkButton>
                             </li>
                             <li class="tab">
-                                <asp:LinkButton ID="linkbtn_fightandhotels" runat="server" PostBackUrl="~/APP/FlightANDHotel.aspx">Flight + Hotel</asp:LinkButton>
+                                <asp:LinkButton ID="linkbtn_fightandhotels" runat="server" PostBackUrl="~/FlightANDHotel.aspx">Flight + Hotel</asp:LinkButton>
                             </li>
                             <li class="tab">
-                                <asp:LinkButton ID="linkbtn_attractions" runat="server" PostBackUrl="~/APP/Attraction.aspx">Attractions</asp:LinkButton>
+                                <asp:LinkButton ID="linkbtn_attractions" runat="server" PostBackUrl="~/Attraction.aspx">Attractions</asp:LinkButton>
                             </li>
                         </ul>
                     </div>

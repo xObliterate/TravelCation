@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TravelCation.APP {
+namespace TravelCation {
     
     
     public partial class ForgotPassword {

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TravelCation.Master" AutoEventWireup="true" CodeBehind="ForgotPassword.aspx.cs" Inherits="TravelCation.APP.ForgotPassword" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TravelCation.Master" AutoEventWireup="true" CodeBehind="ForgotPassword.aspx.cs" Inherits="TravelCation.ForgotPassword" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
