@@ -75,5 +75,11 @@ namespace TravelCation.BLL
             DAL.CustomerDAL customerDAL = new DAL.CustomerDAL();
             return customerDAL.changePassword(email, password);
         }
+
+        public void logout()
+        {
+            DAL.CustomerDAL customerDAL = new DAL.CustomerDAL();
+            customerDAL.logout();
+        }
     }
 }

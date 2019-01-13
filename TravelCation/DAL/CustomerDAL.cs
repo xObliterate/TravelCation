@@ -7,6 +7,7 @@ using System.Data;
 using System.Configuration;
 using TravelCation.BLL;
 using System.Web.UI;
+using System.Web.Security;
 
 namespace TravelCation.DAL
 {
@@ -248,6 +249,19 @@ namespace TravelCation.DAL
                 con.Close();
             }
             return 0;
+        }
+
+        public void logout()
+        {
+            HttpContext.Current.Session.Abandon();
+            HttpContext.Current.Session.RemoveAll();
+            FormsAuthentication.SignOut();
+
+            HttpContext.Current.Response.Cache.SetExpires(DateTime.Now.AddMinutes(-1));
+            HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            HttpContext.Current.Response.Cache.SetNoStore();
+
+            HttpContext.Current.Response.Redirect("/Index.aspx");
         }
     }
 }

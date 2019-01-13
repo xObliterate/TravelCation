@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -98,7 +97,7 @@ namespace TravelCation
                 switch (cust.createAccount(customerBLL))
                 {
                     case 0:
-                        MISC.showToastr.Success(this.Page, "Register successful " + cust.getFullName(), "");
+                        MISC.showToastr.Success(this.Page, "Register successful" , "");
                         break;
 
                     case 1:
@@ -158,20 +157,8 @@ namespace TravelCation
 
         protected void linkbtn_logout_Click(object sender, EventArgs e)
         {
-            logout();
-        }
-
-        private void logout()
-        {
-            Session.Abandon();
-            Session.RemoveAll();
-            FormsAuthentication.SignOut();
-
-            Response.Cache.SetExpires(DateTime.Now.AddMinutes(-1));
-            Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            Response.Cache.SetNoStore();
-
-            Response.Redirect("/Index.aspx");
+            customerBLL = new BLL.CustomerBLL();
+            customerBLL.logout();
         }
 
         protected void emailValidator_ServerValidate(object source, ServerValidateEventArgs args)

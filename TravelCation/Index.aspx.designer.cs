@@ -58,6 +58,15 @@ namespace TravelCation {
         protected global::System.Web.UI.WebControls.View view_hotel;
         
         /// <summary>
+        /// panel_hotel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel panel_hotel;
+        
+        /// <summary>
         /// tb_hotel control.
         /// </summary>
         /// <remarks>
@@ -146,6 +155,15 @@ namespace TravelCation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View view_flight;
+        
+        /// <summary>
+        /// panel_flight control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel panel_flight;
         
         /// <summary>
         /// updatePanel_viewFlightSub_menuFlight control.
@@ -263,5 +281,14 @@ namespace TravelCation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_submitFlight;
+        
+        /// <summary>
+        /// view_attraction control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View view_attraction;
     }
 }

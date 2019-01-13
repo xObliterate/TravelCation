@@ -25,6 +25,12 @@ namespace TravelCation
         {
             int index = Int32.Parse(e.Item.Value);
             mv_services.ActiveViewIndex = index;
+            switch (index)
+            {
+                case 2:
+                    
+                    break;
+            }
         }
 
         protected void btn_submitHotel_Click(object sender, EventArgs e)
@@ -40,10 +46,15 @@ namespace TravelCation
         protected void menu_flight_MenuItemClick(object sender, MenuEventArgs e)
         {
             int index = Int32.Parse(e.Item.Value);
+            mv_subFlight.ActiveViewIndex = index;
             switch (index)
             {
                 case 1:
                     returnDate.Visible = false;
+                    break;
+
+                case 2:
+                    
                     break;
             }
         }
