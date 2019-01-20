@@ -83,3 +83,13 @@ input::-moz-placeholder { /* Mozilla Firefox 19+ */
 input:-ms-input-placeholder { /* Internet Explorer 10+ */
     color: darkgrey;
 }
+
+.input-field label {
+    pointer-events: all;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.menu {
+    padding-top: 18px;
+}

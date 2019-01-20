@@ -17,7 +17,6 @@ namespace TravelCation.DAL
 
         public int createAccount(CustomerBLL customer)
         {
-
             string queryStr = "";
             string email = customer.Email.ToLower();
             SqlCommand cmd;
@@ -89,7 +88,7 @@ namespace TravelCation.DAL
             string loginEmail = email.ToLower();
 
             SqlConnection con = new SqlConnection(connStr);
-            string queryStr = "SELECT Email, FirstName, LastName, Gender, PhoneNo, DOB, Password FROM Customer WHERE Email = @email";
+            string queryStr = "SELECT CustID, Email, FirstName, LastName, Gender, PhoneNo, DOB, Password FROM Customer WHERE Email = @email";
             SqlCommand cmd = new SqlCommand(queryStr, con);
             cmd.Parameters.AddWithValue("@email", loginEmail);
             con.Open();
@@ -114,6 +113,7 @@ namespace TravelCation.DAL
             {
                 if (dr.Read())
                 {
+                    int CustID = int.Parse(dr["CustID"].ToString());
                     string Email = dr["Email"].ToString();
                     string FirstName = dr["FirstName"].ToString();
                     string LastName = dr["LastName"].ToString();
@@ -125,7 +125,7 @@ namespace TravelCation.DAL
                     bool validUser = PasswordHash.ValidatePassword(password, HashPassword);
                     if (validUser == true)
                     {
-                        CustomerBLL cust = new CustomerBLL(Email, FirstName, LastName, Gender, PhoneNo, DOB);
+                        CustomerBLL cust = new CustomerBLL(CustID, Email, FirstName, LastName, Gender, PhoneNo, DOB);
                         HttpContext.Current.Session.RemoveAll();
                         HttpContext.Current.Session["Customer"] = cust;
                     }
@@ -189,7 +189,6 @@ namespace TravelCation.DAL
         public CustomerBLL getEmail(string uniqueID)
         {
             CustomerBLL cust = null;
-            string Email = "";
 
             SqlConnection con = new SqlConnection(connStr);
             string queryStr = "SELECT Email FROM Customer WHERE UniqueID = @uniqueid";
@@ -200,7 +199,7 @@ namespace TravelCation.DAL
 
             if (dr.Read())
             {
-                Email = dr["Email"].ToString();
+                string Email = dr["Email"].ToString();
                 cust = new CustomerBLL(Email);
             }
 

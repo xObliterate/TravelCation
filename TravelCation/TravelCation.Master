@@ -65,7 +65,7 @@
 
                 <!-- Modal Structure for Sign In-->
                 <asp:Panel ID="panelSignIn" runat="server" CssClass="modalpopup" DefaultButton="btn_login">
-                    <asp:UpdatePanel ID="updatePanelSignIn" runat="server" UpdateMode="Always">
+                    <asp:UpdatePanel ID="updatePanelSignIn" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
                             <div class="container">
                                 <div class="modal-content">
@@ -74,7 +74,7 @@
                                             <asp:TextBox ID="tb_loginEmail" runat="server" TextMode="Email"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="rfv_loginEMail" runat="server" EnableClientScript="false" ValidationGroup="validate1" ControlToValidate="tb_loginEmail" Display="Dynamic" ForeColor="Red" ErrorMessage="Email required"></asp:RequiredFieldValidator>
                                             <asp:CustomValidator ID="loginEmailValidator" runat="server" ValidationGroup="validate1" ControlToValidate="tb_loginEmail" ErrorMessage="Email is not valid." Display="Dynamic" ForeColor="Red" OnServerValidate="loginEmailValidator_ServerValidate"></asp:CustomValidator>
-                                            <label for="tb_loginEmail">Email</label>
+                                            <asp:Label ID="lbl_loginEmail" runat="server" AssociatedControlID="tb_loginEmail" Text="Email"></asp:Label>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -82,7 +82,7 @@
                                             <asp:TextBox ID="tb_loginPassword" runat="server" TextMode="Password"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="rfv_password_login" EnableClientScript="false" ValidationGroup="validate1" ControlToValidate="tb_loginPassword" Display="Dynamic" ForeColor="Red" runat="server" ErrorMessage="Password required"></asp:RequiredFieldValidator>
                                             <asp:CustomValidator ID="loginPasswordValidator" runat="server" ValidationGroup="validate1" ControlToValidate="tb_loginPassword" ErrorMessage="Password at least 6 characters" Display="Dynamic" ForeColor="Red" OnServerValidate="loginPasswordValidator_ServerValidate"></asp:CustomValidator>
-                                            <label for="tb_loginPassword">Password</label>
+                                            <asp:Label ID="lbl_loginPassword" runat="server" AssociatedControlID="tb_loginPassword" Text="Password"></asp:Label>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -108,7 +108,7 @@
                         </Triggers>
                     </asp:UpdatePanel>
                 </asp:Panel>
-                <ajaxToolkit:ModalPopupExtender ID="modalPopUpExtenderLogin" PopupDragHandleControlID="updatePanelSignIn" runat="server" BehaviorID="mpe" TargetControlID="linkbtn_login" BackgroundCssClass="modalBackground" PopupControlID="panelSignIn" CancelControlID="btn_cancelLogin">
+                <ajaxToolkit:ModalPopupExtender ID="modalPopUpExtenderLogin" runat="server" BehaviorID="mpe" TargetControlID="linkbtn_login" BackgroundCssClass="modalBackground" PopupControlID="panelSignIn" CancelControlID="btn_cancelLogin">
                 </ajaxToolkit:ModalPopupExtender>
 
                 <!-- Modal Structure for Sign Up -->
@@ -121,12 +121,12 @@
                                         <div class="input-field col s6">
                                             <asp:TextBox ID="tb_firstName" runat="server" CssClass="validate"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="rfv_firstName" runat="server" ValidationGroup="validate" EnableClientScript="false" ControlToValidate="tb_firstName" Display="Dynamic" ForeColor="Red" ErrorMessage="First name required"></asp:RequiredFieldValidator>
-                                            <label for="tb_firstName">First Name</label>
+                                            <asp:Label ID="lbl_firstName" runat="server" AssociatedControlID="tb_firstName" Text="First Name"></asp:Label>
                                         </div>
                                         <div class="input-field col s6">
                                             <asp:TextBox ID="tb_lastName" runat="server" CssClass="validate"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="rfv_lname" EnableClientScript="false" ValidationGroup="validate" ControlToValidate="tb_lastName" Display="Dynamic" ForeColor="Red" runat="server" ErrorMessage="Last name required"></asp:RequiredFieldValidator>
-                                            <label for="tb_lastName">Last Name</label>
+                                            <asp:Label ID="lbl_lastName" runat="server" AssociatedControlID="tb_lastName" Text="Last Name"></asp:Label>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -134,7 +134,8 @@
                                             <asp:TextBox ID="tb_registerEmail" runat="server" TextMode="Email" CssClass="validate"></asp:TextBox>
                                             <asp:CustomValidator ID="emailValidator" runat="server" ControlToValidate="tb_registerEmail" ValidationGroup="validate" ErrorMessage="Email is not valid." Display="Dynamic" ForeColor="Red" OnServerValidate="emailValidator_ServerValidate"></asp:CustomValidator>
                                             <asp:RequiredFieldValidator ID="rfv_email" EnableClientScript="false" ValidationGroup="validate" ControlToValidate="tb_registerEmail" Display="Dynamic" ForeColor="Red" runat="server" ErrorMessage="Email required"></asp:RequiredFieldValidator>
-                                            <label for="tb_registerEmail">Email</label>
+                                            <asp:Label ID="lbl_registeredEmail" runat="server" AssociatedControlID="tb_registerEmail" Text="Email"></asp:Label>
+
                                         </div>
                                     </div>
                                     <div class="row">
@@ -142,7 +143,7 @@
                                             <asp:TextBox ID="tb_registerPassword" runat="server" TextMode="Password" CssClass="validate"></asp:TextBox>
                                             <asp:CustomValidator ID="passValidator" CssClass="cv" runat="server" ControlToValidate="tb_registerPassword" ValidationGroup="validate" ErrorMessage="Password at least 6 characters" Display="Dynamic" ForeColor="Red" OnServerValidate="passValidator_ServerValidate"></asp:CustomValidator>
                                             <asp:RequiredFieldValidator ID="rfv_passwordConfirm" EnableClientScript="false" ValidationGroup="validate" ControlToValidate="tb_registerPassword" Display="Dynamic" ForeColor="Red" runat="server" ErrorMessage="Password required"></asp:RequiredFieldValidator>
-                                            <label for="tb_registerPassword">Password</label>
+                                            <asp:Label ID="lbl_registerPassword" runat="server" AssociatedControlID="tb_registerPassword" Text="Password"></asp:Label>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -159,7 +160,7 @@
                         </Triggers>
                     </asp:UpdatePanel>
                 </asp:Panel>
-                <ajaxToolkit:ModalPopupExtender ID="modalPopUpExtenderRegister" runat="server" PopupDragHandleControlID="updatePanelSignUp" BehaviorID="mpe1" TargetControlID="linkbtn_register" BackgroundCssClass="modalBackground" PopupControlID="panelSignUp" CancelControlID="btn_cancelRegister">
+                <ajaxToolkit:ModalPopupExtender ID="modalPopUpExtenderRegister" runat="server" BehaviorID="mpe1" TargetControlID="linkbtn_register" BackgroundCssClass="modalBackground" PopupControlID="panelSignUp" CancelControlID="btn_cancelRegister">
                 </ajaxToolkit:ModalPopupExtender>
 
                 <!--Tabs -->

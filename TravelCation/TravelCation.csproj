@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -80,6 +81,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -122,6 +125,7 @@
     <Content Include="APP\Assets\webfonts\fa-regular-400.svg" />
     <Content Include="APP\Assets\webfonts\fa-solid-900.svg" />
     <Content Include="TravelCation.Master" />
+    <Content Include="WsTravelCation.svc" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -158,6 +162,12 @@
     <Compile Include="Attraction.aspx.designer.cs">
       <DependentUpon>Attraction.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BLL\BookingBLL.cs" />
+    <Compile Include="BLL\PaymentBLL.cs" />
+    <Compile Include="BLL\ServiceBLL.cs" />
+    <Compile Include="DAL\BookingDAL.cs" />
+    <Compile Include="DAL\PaymentDAL.cs" />
+    <Compile Include="DAL\ServiceDAL.cs" />
     <Compile Include="Flight.aspx.cs">
       <DependentUpon>Flight.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -186,6 +196,7 @@
     <Compile Include="Hotel.aspx.designer.cs">
       <DependentUpon>Hotel.aspx</DependentUpon>
     </Compile>
+    <Compile Include="IWsTravelCation.cs" />
     <Compile Include="ManageTrip.aspx.cs">
       <DependentUpon>ManageTrip.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -234,6 +245,9 @@
     </Compile>
     <Compile Include="TravelCation.Master.designer.cs">
       <DependentUpon>TravelCation.Master</DependentUpon>
+    </Compile>
+    <Compile Include="WsTravelCation.svc.cs">
+      <DependentUpon>WsTravelCation.svc</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />

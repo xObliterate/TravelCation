@@ -70,13 +70,13 @@ public class InputValidation
         }
     }
 
-    public static bool IsValidCvv(string Cvv)
+    public static bool ValidateCVV(string Cvv)
     {
         string pattern = @"^\d{3}$";
         bool isValid = ((Regex.Match(Cvv, pattern).Success) ? true : false);
         return isValid;
     }
-
+    
     public static bool IsValidExpiration(string ExpiryDate)
     {
         string[] date = Regex.Split(ExpiryDate, "/");

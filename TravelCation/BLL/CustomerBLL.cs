@@ -7,6 +7,7 @@ namespace TravelCation.BLL
 {
     public class CustomerBLL
     {
+        public int CustID { get; set; }
         public string Email { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -32,8 +33,9 @@ namespace TravelCation.BLL
             this.Password = Password;
         }
 
-        public CustomerBLL(string Email, string FirstName, string LastName, string Gender, string PhoneNo, string DOB) : this(Email)
+        public CustomerBLL(int CustID, string Email, string FirstName, string LastName, string Gender, string PhoneNo, string DOB) : this(Email)
         {
+            this.CustID = CustID;
             this.FirstName = FirstName;
             this.LastName = LastName;
             this.Gender = Gender;
