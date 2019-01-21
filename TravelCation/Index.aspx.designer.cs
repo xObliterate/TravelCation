@@ -76,6 +76,15 @@ namespace TravelCation {
         protected global::System.Web.UI.WebControls.TextBox tb_currentDestination;
         
         /// <summary>
+        /// rfv_currentDestination control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_currentDestination;
+        
+        /// <summary>
         /// lbl_currentDestination control.
         /// </summary>
         /// <remarks>
@@ -103,6 +112,15 @@ namespace TravelCation {
         protected global::System.Web.UI.WebControls.TextBox tb_endDestination;
         
         /// <summary>
+        /// rfv_endDestination control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_endDestination;
+        
+        /// <summary>
         /// lbl_endDestination control.
         /// </summary>
         /// <remarks>
@@ -121,6 +139,15 @@ namespace TravelCation {
         protected global::System.Web.UI.WebControls.TextBox tb_dateFrom;
         
         /// <summary>
+        /// rfv_dateFrom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_dateFrom;
+        
+        /// <summary>
         /// CalendarExtender_checkin control.
         /// </summary>
         /// <remarks>
@@ -128,15 +155,6 @@ namespace TravelCation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.CalendarExtender CalendarExtender_checkin;
-        
-        /// <summary>
-        /// lbl_dateFrom control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_dateFrom;
         
         /// <summary>
         /// input_dateTo control.
@@ -157,6 +175,15 @@ namespace TravelCation {
         protected global::System.Web.UI.WebControls.TextBox tb_dateTo;
         
         /// <summary>
+        /// rfv_dateTo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_dateTo;
+        
+        /// <summary>
         /// CalendarExtender_checkout control.
         /// </summary>
         /// <remarks>
@@ -164,15 +191,6 @@ namespace TravelCation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.CalendarExtender CalendarExtender_checkout;
-        
-        /// <summary>
-        /// lbl_dateTo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_dateTo;
         
         /// <summary>
         /// row_ddl control.
@@ -202,6 +220,15 @@ namespace TravelCation {
         protected global::System.Web.UI.WebControls.DropDownList ddl_numberofrooms;
         
         /// <summary>
+        /// rfv_numberOfRooms control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_numberOfRooms;
+        
+        /// <summary>
         /// ddl_adults control.
         /// </summary>
         /// <remarks>
@@ -211,6 +238,15 @@ namespace TravelCation {
         protected global::System.Web.UI.WebControls.DropDownList ddl_adults;
         
         /// <summary>
+        /// rfv_adults control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_adults;
+        
+        /// <summary>
         /// ddl_childrens control.
         /// </summary>
         /// <remarks>
@@ -218,6 +254,15 @@ namespace TravelCation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddl_childrens;
+        
+        /// <summary>
+        /// rfv_childrens control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_childrens;
         
         /// <summary>
         /// btn_submit control.

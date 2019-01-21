@@ -8,6 +8,7 @@ using System.Web.Script.Services;
 using System.Web.Services;
 using System.Net;
 using System.Web.Script.Serialization;
+using System.Threading.Tasks;
 
 namespace TravelCation
 {
@@ -35,8 +36,10 @@ namespace TravelCation
                     input_endDestination.Attributes["class"] = "input-field col s12";
                     input_currentDestination.Visible = false;
                     tb_currentDestination.Enabled = false;
-                    lbl_dateFrom.Text = "Check-in (DD/MM/YYYY)";
-                    lbl_dateTo.Text = "Check-out (DD/MM/YYYY)";
+                    tb_dateFrom.Attributes.Add("placeholder", "Check-in (DD/MM/YYYY)");
+                    tb_dateTo.Attributes.Add("placeholder", "Check-out (DD/MM/YYYY)");
+                    //lbl_dateFrom.Text = "Check-in (DD/MM/YYYY)";
+                    //lbl_dateTo.Text = "Check-out (DD/MM/YYYY)";
                     input_ddl_rooms.Visible = true;
                     row_ddl.Visible = true;
                     ddl_numberofrooms.Enabled = true;
@@ -53,8 +56,10 @@ namespace TravelCation
                     input_endDestination.Attributes["class"] = "input-field col s6";
                     input_currentDestination.Visible = true;
                     tb_currentDestination.Enabled = true;
-                    lbl_dateFrom.Text = "Departing (DD/MM/YYYY)";
-                    lbl_dateTo.Text = "Returning (DD/MM/YYYY)";
+                    //lbl_dateFrom.Text = "Departing (DD/MM/YYYY)";
+                    //lbl_dateTo.Text = "Returning (DD/MM/YYYY)";
+                    tb_dateFrom.Attributes.Add("placeholder", "Departing (DD/MM/YYYY)");
+                    tb_dateTo.Attributes.Add("placeholder", "Returning-out (DD/MM/YYYY)");
                     input_ddl_rooms.Visible = false;
                     row_ddl.Visible = true;
                     ddl_numberofrooms.Enabled = false;
@@ -71,8 +76,10 @@ namespace TravelCation
                     input_endDestination.Attributes["class"] = "input-field col s6";
                     input_currentDestination.Visible = true;
                     tb_currentDestination.Enabled = true;
-                    lbl_dateFrom.Text = "Departing (DD/MM/YYYY)";
-                    lbl_dateTo.Text = "Returning (DD/MM/YYYY)";
+                    //lbl_dateFrom.Text = "Departing (DD/MM/YYYY)";
+                    //lbl_dateTo.Text = "Returning (DD/MM/YYYY)";
+                    tb_dateFrom.Attributes.Add("placeholder", "Departing (DD/MM/YYYY)");
+                    tb_dateTo.Attributes.Add("placeholder", "Returning-out (DD/MM/YYYY)");
                     input_ddl_rooms.Visible = true;
                     row_ddl.Visible = true;
                     ddl_numberofrooms.Enabled = true;
@@ -88,8 +95,10 @@ namespace TravelCation
                     input_endDestination.Attributes["class"] = "input-field col s12";
                     input_currentDestination.Visible = false;
                     tb_currentDestination.Enabled = false;
-                    lbl_dateFrom.Text = "From (DD/MM/YYYY)";
-                    lbl_dateTo.Text = "To (DD/MM/YYYY)";
+                    //lbl_dateFrom.Text = "From (DD/MM/YYYY)";
+                    //lbl_dateTo.Text = "To (DD/MM/YYYY)";
+                    tb_dateFrom.Attributes.Add("placeholder", "From (DD/MM/YYYY)");
+                    tb_dateTo.Attributes.Add("placeholder", "To (DD/MM/YYYY)");
                     row_ddl.Visible = false;
                     ddl_numberofrooms.Enabled = false;
                     ddl_adults.Enabled = false;
@@ -123,6 +132,65 @@ namespace TravelCation
                     input_dateTo.Visible = false;
                     tb_dateTo.Enabled = false;
                     break;
+            }
+        }
+
+        protected void tb_dateFrom_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime dateTo;
+                DateTime dateFrom = DateTime.Parse(tb_dateFrom.Text);
+
+                if (tb_dateTo.Text == "")
+                {
+                    tb_dateTo.Text = dateFrom.AddDays(1).ToString("dd/MM/yyyy");
+                    dateTo = DateTime.Parse(tb_dateTo.Text);
+                }
+                else
+                {
+                    dateTo = DateTime.Parse(tb_dateTo.Text);
+                }
+                if (dateFrom == dateTo || dateFrom > dateTo)
+                {
+                    tb_dateTo.Text = dateFrom.AddDays(1).ToString("dd/MM/yyyy");
+                    DateTime newStartDate = DateTime.Parse(tb_dateTo.Text);
+                    CalendarExtender_checkout.StartDate = newStartDate;
+                }
+            }
+            catch(FormatException ex)
+            {
+                MISC.showToastr.Error(this.Page, ex.Message.ToString(), "");
+            }
+        }
+
+        protected void tb_dateTo_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime dateFrom;
+                DateTime dateTo = DateTime.Parse(tb_dateTo.Text);
+
+                if (tb_dateFrom.Text == "")
+                {
+                    tb_dateFrom.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                    dateFrom = DateTime.Parse(tb_dateFrom.Text);
+                }
+                else
+                {
+                    dateFrom = DateTime.Parse(tb_dateFrom.Text);
+                }
+
+                if (dateTo == dateFrom || dateTo < dateFrom)
+                {
+                    tb_dateTo.Text = dateFrom.AddDays(1).ToString("dd/MM/yyyy");
+                    DateTime newStartDate = DateTime.Parse(tb_dateTo.Text);
+                    CalendarExtender_checkout.StartDate = newStartDate;
+                }
+            }
+            catch(FormatException ex)
+            {
+                MISC.showToastr.Error(this.Page, ex.Message.ToString(), "");
             }
         }
     }

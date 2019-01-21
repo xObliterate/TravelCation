@@ -75,6 +75,10 @@ namespace TravelCation
                     case 3:
                         MISC.showToastr.Warning(this.Page, "Invalid email", "");
                         break;
+
+                    case 4:
+                        MISC.showToastr.Error(this.Page, "Wrong Password", "");
+                        break;
                 }
             }
             else

@@ -93,3 +93,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 .menu {
     padding-top: 18px;
 }
+
+.row .rfv {
+    padding-left: 44px;
+}
