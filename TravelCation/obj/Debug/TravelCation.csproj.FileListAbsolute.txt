@@ -29,6 +29,6 @@ C:\Users\pokem\Documents\Visual Studio 2015\Projects\TravelCation\TravelCation\b
 C:\Users\pokem\Documents\Visual Studio 2015\Projects\TravelCation\TravelCation\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\pokem\Documents\Visual Studio 2015\Projects\TravelCation\TravelCation\bin\Microsoft.ApplicationInsights.xml
 C:\Users\pokem\Documents\Visual Studio 2015\Projects\TravelCation\TravelCation\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\pokem\Documents\Visual Studio 2015\Projects\TravelCation\TravelCation\obj\Debug\TravelCation.csprojResolveAssemblyReference.cache
 C:\Users\pokem\Documents\Visual Studio 2015\Projects\TravelCation\TravelCation\obj\Debug\TravelCation.dll
 C:\Users\pokem\Documents\Visual Studio 2015\Projects\TravelCation\TravelCation\obj\Debug\TravelCation.pdb
+C:\Users\pokem\Documents\Visual Studio 2015\Projects\TravelCation\TravelCation\obj\Debug\TravelCation.csprojResolveAssemblyReference.cache

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WsHotelSupplier" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:57004/WsHotelSupplier.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:57004/WsHotelSupplier.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:57004/WsHotelSupplier.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HotelSupplier" />
+      <xsd:import schemaLocation="http://localhost:57004/WsHotelSupplier.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IWsHotelSupplier_getHotelInformation_InputMessage">
+    <wsdl:part name="parameters" element="tns:getHotelInformation" />
+  </wsdl:message>
+  <wsdl:message name="IWsHotelSupplier_getHotelInformation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getHotelInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWsHotelSupplier_getRoomsByType_InputMessage">
+    <wsdl:part name="parameters" element="tns:getRoomsByType" />
+  </wsdl:message>
+  <wsdl:message name="IWsHotelSupplier_getRoomsByType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getRoomsByTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWsHotelSupplier_getRoomImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:getRoomImage" />
+  </wsdl:message>
+  <wsdl:message name="IWsHotelSupplier_getRoomImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getRoomImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWsHotelSupplier_getRoomByOccupants_InputMessage">
+    <wsdl:part name="parameters" element="tns:getRoomByOccupants" />
+  </wsdl:message>
+  <wsdl:message name="IWsHotelSupplier_getRoomByOccupants_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getRoomByOccupantsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IWsHotelSupplier">
+    <wsdl:operation name="getHotelInformation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWsHotelSupplier/getHotelInformation" message="tns:IWsHotelSupplier_getHotelInformation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWsHotelSupplier/getHotelInformationResponse" message="tns:IWsHotelSupplier_getHotelInformation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getRoomsByType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWsHotelSupplier/getRoomsByType" message="tns:IWsHotelSupplier_getRoomsByType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWsHotelSupplier/getRoomsByTypeResponse" message="tns:IWsHotelSupplier_getRoomsByType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getRoomImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWsHotelSupplier/getRoomImage" message="tns:IWsHotelSupplier_getRoomImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWsHotelSupplier/getRoomImageResponse" message="tns:IWsHotelSupplier_getRoomImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getRoomByOccupants">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWsHotelSupplier/getRoomByOccupants" message="tns:IWsHotelSupplier_getRoomByOccupants_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWsHotelSupplier/getRoomByOccupantsResponse" message="tns:IWsHotelSupplier_getRoomByOccupants_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IWsHotelSupplier" type="tns:IWsHotelSupplier">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getHotelInformation">
+      <soap:operation soapAction="http://tempuri.org/IWsHotelSupplier/getHotelInformation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRoomsByType">
+      <soap:operation soapAction="http://tempuri.org/IWsHotelSupplier/getRoomsByType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRoomImage">
+      <soap:operation soapAction="http://tempuri.org/IWsHotelSupplier/getRoomImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRoomByOccupants">
+      <soap:operation soapAction="http://tempuri.org/IWsHotelSupplier/getRoomByOccupants" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WsHotelSupplier">
+    <wsdl:port name="BasicHttpBinding_IWsHotelSupplier" binding="tns:BasicHttpBinding_IWsHotelSupplier">
+      <soap:address location="http://localhost:57004/WsHotelSupplier.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

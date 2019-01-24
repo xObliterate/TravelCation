@@ -33,7 +33,7 @@ main {
 }
 
 .modalBackground {
-    background-color: black;
+    background-color: #424242;
     filter: alpha(opactiy=90);
     opacity: 0.6;
     z-index: 20;

@@ -8,14 +8,11 @@ using System.Web.Script.Services;
 using System.Web.Services;
 using System.Net;
 using System.Web.Script.Serialization;
-using System.Threading.Tasks;
 
 namespace TravelCation
 {
     public partial class Index : System.Web.UI.Page
     {
-        int index = 0;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             CalendarExtender_checkin.StartDate = DateTime.Now;
@@ -24,9 +21,11 @@ namespace TravelCation
             CalendarExtender_checkout.EndDate = new DateTime(DateTime.Today.Year + 0, 12, 31);
         }
 
+
         protected void menu_MenuItemClick(object sender, MenuEventArgs e)
         {
             int index = int.Parse(e.Item.Value);
+
             switch (index)
             {
                 case 0:
@@ -45,7 +44,14 @@ namespace TravelCation
                     ddl_numberofrooms.Enabled = true;
                     ddl_adults.Enabled = true;
                     ddl_childrens.Enabled = true;
-                    index = 0;
+
+                    rfv_currentDestination.ValidationGroup = "validate";
+                    rfv_endDestination.ValidationGroup = "0";
+                    rfv_dateFrom.ValidationGroup = "0";
+                    rfv_dateTo.ValidationGroup = "0";
+                    rfv_numberOfRooms.ValidationGroup = "0";
+                    rfv_adults.ValidationGroup = "0";
+                    btn_submit.ValidationGroup = "0";
                     break;
 
                 case 1:
@@ -65,7 +71,14 @@ namespace TravelCation
                     ddl_numberofrooms.Enabled = false;
                     ddl_adults.Enabled = true;
                     ddl_childrens.Enabled = true;
-                    index = 1;
+
+                    rfv_currentDestination.ValidationGroup = "1";
+                    rfv_endDestination.ValidationGroup = "1";
+                    rfv_dateFrom.ValidationGroup = "1";
+                    rfv_dateTo.ValidationGroup = "1";
+                    rfv_numberOfRooms.ValidationGroup = "validate";
+                    rfv_adults.ValidationGroup = "1";
+                    btn_submit.ValidationGroup = "1";
                     break;
 
                 case 2:
@@ -85,7 +98,14 @@ namespace TravelCation
                     ddl_numberofrooms.Enabled = true;
                     ddl_adults.Enabled = true;
                     ddl_childrens.Enabled = true;
-                    index = 2;
+
+                    rfv_currentDestination.ValidationGroup = "2";
+                    rfv_endDestination.ValidationGroup = "2";
+                    rfv_dateFrom.ValidationGroup = "2";
+                    rfv_dateTo.ValidationGroup = "2";
+                    rfv_numberOfRooms.ValidationGroup = "2";
+                    rfv_adults.ValidationGroup = "2";
+                    btn_submit.ValidationGroup = "2";
                     break;
 
                 case 3:
@@ -103,6 +123,14 @@ namespace TravelCation
                     ddl_numberofrooms.Enabled = false;
                     ddl_adults.Enabled = false;
                     ddl_childrens.Enabled = false;
+
+                    rfv_currentDestination.ValidationGroup = "validate";
+                    rfv_endDestination.ValidationGroup = "3";
+                    rfv_dateFrom.ValidationGroup = "3";
+                    rfv_dateTo.ValidationGroup = "3";
+                    rfv_numberOfRooms.ValidationGroup = "validate";
+                    rfv_adults.ValidationGroup = "validate";
+                    btn_submit.ValidationGroup = "3";
                     break;
             }
         }
@@ -111,9 +139,68 @@ namespace TravelCation
         {
             if (Page.IsValid)
             {
-                switch (index)
-                {
+                string currentDestination = tb_currentDestination.Text;
+                string destination = tb_endDestination.Text;
+                string startDate = tb_dateFrom.Text;
+                string endDate = tb_dateTo.Text;
+                string room = ddl_numberofrooms.SelectedValue;
+                string adult = ddl_adults.SelectedValue;
+                string children = ddl_childrens.SelectedValue;
 
+                switch (btn_submit.ValidationGroup)
+                {
+                    case "0":
+                        if (ddl_childrens.SelectedValue == "0")
+                        {
+                            Response.Redirect(string.Format("HotelSearch.aspx?destination={0}&startDate={1}&endDate={2}&rooms={3}&adults={4}&c={5}", Server.UrlEncode(destination), Server.UrlEncode(startDate), Server.UrlEncode(endDate), Server.UrlEncode(room), Server.UrlEncode(adult), Server.UrlEncode("N")));
+                        }
+                        else
+                        {
+                            Response.Redirect(string.Format("HotelSearch.aspx?destination={0}&startDate={1}&endDate={2}&rooms={3}&adults={4}&child={5}&c={6}", Server.UrlEncode(destination), Server.UrlEncode(startDate), Server.UrlEncode(endDate), Server.UrlEncode(room), Server.UrlEncode(adult), Server.UrlEncode(children), Server.UrlEncode("Y")));
+                        }
+                        break;
+
+                    case "1":
+                        switch (rfv_dateTo.ValidationGroup)
+                        {
+                            case "1":
+                                if (ddl_childrens.SelectedValue == "0")
+                                {
+                                    Response.Redirect(string.Format("FlightSearch.aspx?flyingFrom={0}&flyingTo={1}&startDate={2}&endDate={3}&adults={4}", Server.UrlEncode(currentDestination), Server.UrlEncode(destination), Server.UrlEncode(startDate), Server.UrlEncode(endDate), Server.UrlEncode(adult), Server.UrlEncode("N")));
+                                }
+                                else
+                                {
+                                    Response.Redirect(string.Format("FlightSearch.aspx?flyingFrom={0}&flyingTo={1}&startDate={2}&endDate={3}&adults={4}&child={5}&c={5}", Server.UrlEncode(currentDestination), Server.UrlEncode(destination), Server.UrlEncode(startDate), Server.UrlEncode(endDate), Server.UrlEncode(adult), Server.UrlEncode(children), Server.UrlEncode("Y")));
+                                }
+                                break;
+
+                            case "validate":
+                                if (ddl_childrens.SelectedValue == "0")
+                                {
+                                    Response.Redirect(string.Format("FlightSearch.aspx?flyingFrom={0}&flyingTo={1}&startDate={2}&adults={3}&c={4}", Server.UrlEncode(currentDestination), Server.UrlEncode(destination), Server.UrlEncode(startDate), Server.UrlEncode(adult), Server.UrlEncode("N")));
+                                }
+                                else
+                                {
+                                    Response.Redirect(string.Format("FlightSearch.aspx?flyingFrom={0}&flyingTo={1}&startDate={2}&adults={3}&child={4}&c={5}", Server.UrlEncode(currentDestination), Server.UrlEncode(destination), Server.UrlEncode(startDate), Server.UrlEncode(adult), Server.UrlEncode(children), Server.UrlEncode("Y")));
+                                }
+                                break;
+                        }
+                        break;
+
+                    case "2":
+                        if (ddl_childrens.SelectedValue == "0")
+                        {
+                            Response.Redirect(string.Format("PackageSearch.aspx?origin={0}&destination={1}&startDate={2}&endDate={3}&rooms={4}&adults={5}&c={6}", Server.UrlEncode(currentDestination), Server.UrlEncode(destination), Server.UrlEncode(startDate), Server.UrlEncode(endDate), Server.UrlEncode(room), Server.UrlEncode(adult), Server.UrlEncode("N")));
+                        }
+                        else
+                        {
+                            Response.Redirect(string.Format("PackageSearch.aspx?origin={0}&destination={1}&startDate={2}&endDate={3}&rooms={4}&adults={5}&child={6}&c={7}", Server.UrlEncode(currentDestination), Server.UrlEncode(destination), Server.UrlEncode(startDate), Server.UrlEncode(endDate), Server.UrlEncode(room), Server.UrlEncode(adult), Server.UrlEncode(children), Server.UrlEncode("Y")));
+                        }
+                        break;
+
+                    case "3":
+                        Response.Redirect(string.Format("AttractionSearch.aspx?destination={0}&startDate={1}&endDate={2}&c={3}", Server.UrlEncode(destination), Server.UrlEncode(startDate), Server.UrlEncode(endDate), Server.UrlEncode("N")));
+                        break;
                 }
             }
         }
@@ -126,11 +213,13 @@ namespace TravelCation
                 case 0:
                     input_dateTo.Visible = true;
                     tb_dateTo.Enabled = true;
+                    rfv_dateTo.ValidationGroup = "1";
                     break;
 
                 case 1:
                     input_dateTo.Visible = false;
                     tb_dateTo.Enabled = false;
+                    rfv_dateTo.ValidationGroup = "validate";
                     break;
             }
         }
@@ -158,7 +247,7 @@ namespace TravelCation
                     CalendarExtender_checkout.StartDate = newStartDate;
                 }
             }
-            catch(FormatException ex)
+            catch (FormatException ex)
             {
                 MISC.showToastr.Error(this.Page, ex.Message.ToString(), "");
             }
@@ -188,7 +277,7 @@ namespace TravelCation
                     CalendarExtender_checkout.StartDate = newStartDate;
                 }
             }
-            catch(FormatException ex)
+            catch (FormatException ex)
             {
                 MISC.showToastr.Error(this.Page, ex.Message.ToString(), "");
             }

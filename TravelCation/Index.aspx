@@ -13,7 +13,7 @@
     </section>
     <br />
     <div class="form-container container z-depth-3">
-        <asp:UpdatePanel ID="updatepanel" runat="server" UpdateMode="Always">
+        <asp:UpdatePanel ID="updatepanel" runat="server">
             <Triggers>
                 <asp:PostBackTrigger ControlID="menu" />
             </Triggers>
@@ -55,14 +55,14 @@
                         <div class="input-field col s6" id="input_currentDestination" runat="server" visible="false">
                             <i class="material-icons prefix">location_on</i>
                             <asp:TextBox ID="tb_currentDestination" runat="server" Enabled="false"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="rfv_currentDestination" runat="server" CssClass="rfv" EnableClientScript="false" ValidationGroup="validate" ControlToValidate="tb_currentDestination" Display="Dynamic" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="rfv_currentDestination" runat="server" CssClass="rfv" EnableClientScript="false" ControlToValidate="tb_currentDestination" Display="Dynamic" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
                             <asp:Label ID="lbl_currentDestination" runat="server" AssociatedControlID="tb_currentDestination" Text="Flying From"></asp:Label>
                         </div>
 
                         <div class="input-field col s12" id="input_endDestination" runat="server">
                             <i class="material-icons prefix">location_on</i>
                             <asp:TextBox ID="tb_endDestination" CssClass="validate" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="rfv_endDestination" runat="server" CssClass="rfv" EnableClientScript="false" ValidationGroup="validate" ControlToValidate="tb_endDestination" Display="Dynamic" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="rfv_endDestination" runat="server" CssClass="rfv" EnableClientScript="false" ControlToValidate="tb_endDestination" Display="Dynamic" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
                             <asp:Label ID="lbl_endDestination" runat="server" AssociatedControlID="tb_endDestination" Text="Destination, hotel name"></asp:Label>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                         <div class="input-field col s6">
                             <i class="material-icons prefix">date_range</i>
                             <asp:TextBox ID="tb_dateFrom" runat="server" OnTextChanged="tb_dateFrom_TextChanged" AutoPostBack="true" placeholder="Check-in (DD/MM/YYYY)"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="rfv_dateFrom" runat="server" CssClass="rfv" EnableClientScript="false" ValidationGroup="validate" ControlToValidate="tb_dateFrom" Display="Dynamic" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="rfv_dateFrom" runat="server" CssClass="rfv" EnableClientScript="false"  ControlToValidate="tb_dateFrom" Display="Dynamic" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
                             <ajaxToolkit:CalendarExtender ID="CalendarExtender_checkin" runat="server" Format="dd/MM/yyyy" PopupButtonID="tb_dateFrom" PopupPosition="BottomLeft" TargetControlID="tb_dateFrom" DefaultView="Days" />
                             <%--<asp:Label ID="lbl_dateFrom" runat="server" AssociatedControlID="tb_dateFrom" Text="Check-in (DD/MM/YYYY)"></asp:Label>--%>
                         </div>
@@ -78,7 +78,7 @@
                         <div class="input-field col s6" id="input_dateTo" runat="server">
                             <i class="material-icons prefix">date_range</i>
                             <asp:TextBox ID="tb_dateTo" runat="server" Enabled="true" OnTextChanged="tb_dateTo_TextChanged" AutoPostBack="true" placeholder="Check-out (DD/MM/YYYY)"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="rfv_dateTo" runat="server" CssClass="rfv" EnableClientScript="false" ValidationGroup="validate" ControlToValidate="tb_dateTo" Display="Dynamic" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="rfv_dateTo" runat="server" CssClass="rfv" EnableClientScript="false"  ControlToValidate="tb_dateTo" Display="Dynamic" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
                             <ajaxToolkit:CalendarExtender ID="CalendarExtender_checkout" runat="server" Format="dd/MM/yyyy" PopupButtonID="tb_dateTo" PopupPosition="BottomLeft" TargetControlID="tb_dateTo" DefaultView="Days" />
                             <%--<asp:Label ID="lbl_dateTo" runat="server" AssociatedControlID="tb_dateTo" Text="Check out (DD/MM/YYYY)"></asp:Label>--%>
                         </div>
@@ -97,7 +97,7 @@
                                 <asp:ListItem Value="8" Text="8 Rooms"></asp:ListItem>
                                 <asp:ListItem Value="9" Text="9 Rooms"></asp:ListItem>
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="rfv_numberOfRooms" runat="server" CssClass="rfv" InitialValue="0" EnableClientScript="false" ValidationGroup="validate" ControlToValidate="ddl_numberofrooms" Display="Dynamic" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="rfv_numberOfRooms" runat="server" CssClass="rfv" InitialValue="0" EnableClientScript="false"  ControlToValidate="ddl_numberofrooms" Display="Dynamic" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
                         </div>
                         <div class="input-field col s4">
                             <asp:DropDownList ID="ddl_adults" CssClass="browser-default" runat="server" Enabled="true">
@@ -113,7 +113,7 @@
                                 <asp:ListItem Value="9" Text="9 Adults"></asp:ListItem>
                                 <asp:ListItem Value="10" Text="10 Adults"></asp:ListItem>
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="rfv_adults" runat="server" CssClass="rfv" InitialValue="0" EnableClientScript="false" ValidationGroup="validate" ControlToValidate="ddl_adults" Display="Dynamic" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="rfv_adults" runat="server" CssClass="rfv" InitialValue="0" EnableClientScript="false"  ControlToValidate="ddl_adults" Display="Dynamic" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
                         </div>
                         <div class="input-field col s4">
                             <asp:DropDownList ID="ddl_childrens" CssClass="browser-default" runat="server" Enabled="true">
@@ -125,12 +125,11 @@
                                 <asp:ListItem Value="5" Text="5 Childrens"></asp:ListItem>
                                 <asp:ListItem Value="6" Text="6 Childrens"></asp:ListItem>
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="rfv_childrens" runat="server" CssClass="rfv" InitialValue="0" EnableClientScript="false" ValidationGroup="validate" ControlToValidate="ddl_childrens" Display="Dynamic" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <asp:Button ID="btn_submit" CssClass="btn orange darken-2" runat="server" Text="Search" OnClick="btn_submit_Click" ValidationGroup="validate" />
+                            <asp:Button ID="btn_submit" CssClass="btn orange darken-2" runat="server" Text="Search" OnClick="btn_submit_Click"  />
                         </div>
                     </div>
                 </asp:Panel>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4f3f4c69-256e-44e1-b327-0b2202b2abce" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:57004/WsHotelSupplier.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="WsHotelSupplier.xsd" MetadataType="Schema" ID="2a4d7b18-cab4-4937-9b51-5dbbee777bab" SourceId="1" SourceUrl="http://localhost:57004/WsHotelSupplier.svc?xsd=xsd0" />
+    <MetadataFile FileName="WsHotelSupplier1.xsd" MetadataType="Schema" ID="015dabfa-2e71-4294-a6e5-cb883e366763" SourceId="1" SourceUrl="http://localhost:57004/WsHotelSupplier.svc?xsd=xsd1" />
+    <MetadataFile FileName="WsHotelSupplier2.xsd" MetadataType="Schema" ID="0f9ce3d9-8551-4875-8d73-29dc026e0bbd" SourceId="1" SourceUrl="http://localhost:57004/WsHotelSupplier.svc?xsd=xsd3" />
+    <MetadataFile FileName="WsHotelSupplier.disco" MetadataType="Disco" ID="3c0ec12f-2965-461b-94f6-c7c70c3509ac" SourceId="1" SourceUrl="http://localhost:57004/WsHotelSupplier.svc?disco" />
+    <MetadataFile FileName="WsHotelSupplier3.xsd" MetadataType="Schema" ID="116c23ad-79c0-4de8-8064-883a64901e89" SourceId="1" SourceUrl="http://localhost:57004/WsHotelSupplier.svc?xsd=xsd2" />
+    <MetadataFile FileName="WsHotelSupplier.wsdl" MetadataType="Wsdl" ID="fa4f9ef0-7c06-4470-a63d-32b6f72dafc7" SourceId="1" SourceUrl="http://localhost:57004/WsHotelSupplier.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

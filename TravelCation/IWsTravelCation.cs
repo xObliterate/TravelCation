@@ -11,27 +11,8 @@ namespace TravelCation
     [ServiceContract]
     public interface IWsTravelCation
     {
-        [OperationContract]
-        int insertService(string ServiceName, string ServiceInCharge, string ServiceContact, char ServiceType);
 
     }
 
-    [DataContract]
-    public class Service
-    {
-        [DataMember]
-        public string ServiceName { get; set; }
-
-        [DataMember]
-        public string ServiceInCharge { get; set; }
-
-        [DataMember]
-        public string ServiceContact { get; set; }
-
-        [DataMember]
-        public char ServiceType { get; set; }
-
-        [DataMember]
-        public decimal ServiceRating { get; set; }
-    }
+ 
 }
